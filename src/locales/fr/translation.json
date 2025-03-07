@@ -1,0 +1,45 @@
+{
+  "header": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "resume": "CV",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Bonjour !",
+    "intro": "Je suis",
+    "description": "Je suis passionné par la création de logiciels excellents qui améliorent la vie des personnes autour de moi."
+  },
+  "about": {
+    "title": "QUI SUIS-JE",
+    "description": "Je suis un développeur web full stack passionné avec de l'expérience en JavaScript, React.js, Node.js et de nombreuses autres technologies modernes.",
+    "techstack": "Compétences Professionnelles",
+    "toolstack": "Outils que j'utilise"
+  },
+  "projects": {
+    "title": "MES TRAVAUX RÉCENTS",
+    "description": "Voici quelques projets sur lesquels j'ai travaillé récemment.",
+    "viewProject": "Voir le Projet",
+    "viewCode": "Voir le Code"
+  },
+  "resume": {
+    "title": "MON CV",
+    "download": "Télécharger CV"
+  },
+  "contact": {
+    "title": "CONTACTEZ-MOI",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer"
+  },
+  "footer": {
+    "designed": "Conçu et développé par",
+    "copyright": "Copyright © 2023"
+  },
+  "language": {
+    "english": "Anglais",
+    "french": "Français"
+  }
+}
