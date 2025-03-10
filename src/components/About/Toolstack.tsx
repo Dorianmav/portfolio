@@ -9,6 +9,7 @@ import {
 import { DiScrum, DiGit } from "react-icons/di";
 import { FaBitbucket } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
+import WindsurfWhiteLogo from "../../assets/windsurf-white-logo.svg";
 
 /**
  * Toolstack component that displays a grid of tool icons
@@ -25,6 +26,9 @@ const Toolstack: React.FC = () => {
       </Col>
       <Col xs={4} md={2} className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center">
         <VscVscode title="VS Code" />
+      </Col>
+      <Col xs={4} md={2} className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center">
+        <img src={WindsurfWhiteLogo} alt="Windsurf" title="Windsurf" style={{ maxHeight: '1em', filter: 'invert(100%)', opacity: '0.9' }} />
       </Col>
       <Col xs={4} md={2} className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center">
         <SiPostman title="Postman" />
