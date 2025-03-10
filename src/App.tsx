@@ -1,16 +1,22 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import viteLogo from './assets/windsurf-logo.png'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import About from './components/About/About'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import { useTranslation } from 'react-i18next'
+import { ProjectsProvider } from './context/ProjectsContext'
+import { SingleProjectProvider } from './context/SingleProjectContext'
+import ProjectsGrid from './components/Projects/ProjectsGrid'
+import ProjectInfo from './components/Projects/ProjectInfo'
+import { Routes, Route } from 'react-router-dom'
 
-function App() {
+// Composant pour la page d'accueil
+const HomePage = () => {
   const [count, setCount] = useState(0)
   const { t } = useTranslation()
-
+  
   return (
     <>
       <div className="container mx-auto p-4 md:p-6">
@@ -41,9 +47,34 @@ function App() {
       
       {/* Added About component */}
       <About />
+      
+      {/* Added ProjectsGrid component */}
+      <ProjectsGrid />
+    </>
+  );
+};
+
+function App() {
+  const { t } = useTranslation()
+
+  return (
+    <>
+      <ProjectsProvider>
+        <SingleProjectProvider>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/projects/:id" element={
+              <div className="container mx-auto p-4 md:p-6">
+                <ProjectInfo />
+              </div>
+            } />
+          </Routes>
+        </SingleProjectProvider>
+      </ProjectsProvider>
+
       <p className="read-the-docs mt-4 text-center">
           {t('footer.designed')} Dorianmav
-        </p>
+      </p>
     </>
   )
 }
