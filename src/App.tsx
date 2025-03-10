@@ -37,13 +37,13 @@ function App() {
             {t('home.description')}
           </p>
         </div>
-        <p className="read-the-docs mt-4 text-center">
-          {t('footer.designed')} Dorianmav
-        </p>
       </div>
       
       {/* Added About component */}
       <About />
+      <p className="read-the-docs mt-4 text-center">
+          {t('footer.designed')} Dorianmav
+        </p>
     </>
   )
 }
