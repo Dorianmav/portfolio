@@ -5,14 +5,14 @@ import Toolstack from "./Toolstack";
 import { useTranslation } from "react-i18next";
 
 /**
- * About component that displays information about the developer's
+ * Stack component that displays information stack the developer's
  * technical skills and tools
  */
-const About: React.FC = () => {
+const Stack: React.FC = () => {
   const { t } = useTranslation();
   
   return (
-    <Container fluid className="about-section">
+    <Container fluid className="stack-section">
       <Container>
         <Row style={{ justifyContent: "center", padding: "10px" }}>
           <Col
@@ -24,12 +24,12 @@ const About: React.FC = () => {
             }}
           >
             <h1 className="text-4xl font-bold pb-5">
-              {t('about.techstack')} <strong className="text-purple-500">Skillset</strong>
+              {t('stack.techstack')} <strong className="text-purple-500">Skillset</strong>
             </h1>
             <Techstack />
 
             <h1 className="text-4xl font-bold pb-5">
-              <strong className="text-purple-500">{t('about.toolstack')}</strong>
+              <strong className="text-purple-500">{t('stack.toolstack')}</strong>
             </h1>
             <Toolstack />
           </Col>
@@ -39,4 +39,4 @@ const About: React.FC = () => {
   );
 };
 
-export default About;
+export default Stack;

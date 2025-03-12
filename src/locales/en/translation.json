@@ -7,11 +7,11 @@
     "contact": "Contact"
   },
   "home": {
-    "greeting": "Hi There!",
-    "intro": "I'm",
-    "description": "I am passionate about building excellent software that improves the lives of those around me."
+    "greeting": "Welcome to my Portfolio!",
+    "intro": "Who I am",
+    "description": "I'm a young developer with two years' actual programming experience. Passionate about manga, video games, sports and development in Java and TypeScript, I enjoy taking on technical challenges and continuously improving my skills. Motivated and rigorous, I'm always ready to learn new technologies and collaborate effectively in a team to complete innovative projects. My goal is to design high-performance, optimized solutions while contributing to a dynamic and stimulating work environment."
   },
-  "about": {
+  "stack": {
     "title": "KNOW WHO I AM",
     "description": "I'm a passionate Full Stack Web Developer with experience in JavaScript, React.js, Node.js, and many other modern technologies.",
     "techstack": "Professional Skillset",
