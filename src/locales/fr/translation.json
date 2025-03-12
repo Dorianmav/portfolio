@@ -7,11 +7,11 @@
     "contact": "Contact"
   },
   "home": {
-    "greeting": "Bonjour !",
-    "intro": "Je suis",
-    "description": "Je suis passionné par la création de logiciels excellents qui améliorent la vie des personnes autour de moi."
+    "greeting": "Bienvenue sur mon Portfolio !",
+    "intro": "Qui suis-je",
+    "description": "Je suis un jeune développeur avec deux années d'expérience réelle en programmation. Passionné par les mangas, les jeux vidéo, le sport et le développement en Java et TypeScript, j'aime relever des défis techniques et améliorer mes compétences en continu. Motivé et rigoureux, je suis toujours prêt à apprendre de nouvelles technologies et à collaborer efficacement en équipe pour mener à bien des projets innovants. Mon objectif est de concevoir des solutions performantes et optimisées tout en contribuant à un environnement de travail dynamique et stimulant."
   },
-  "about": {
+  "stack": {
     "title": "QUI SUIS-JE",
     "description": "Je suis un développeur web full stack passionné avec de l'expérience en JavaScript, React.js, Node.js et de nombreuses autres technologies modernes.",
     "techstack": "Compétences Professionnelles",
