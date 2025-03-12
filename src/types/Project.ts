@@ -9,6 +9,10 @@ export interface Project {
   title: string;
   category: ProjectCategory;
   img: string;
+  description?: string;
+  technologies?: string[];
+  githubLink?: string;
+  demoLink?: string;
   ProjectHeader?: ProjectHeader;
 }
 

@@ -17,14 +17,66 @@
     "techstack": "Compétences Professionnelles",
     "toolstack": "Outils que j'utilise"
   },
+  "education": {
+    "title": "MON PARCOURS ACADÉMIQUE",
+    "description": "Voici mon parcours éducatif et mes formations.",
+    "degree1": {
+      "title": "Master en Développement Web",
+      "date": "2020 - 2022",
+      "institution": "Université de Paris",
+      "description": "Spécialisation en développement d'applications web modernes avec React et Node.js. Projets réalisés en équipe et individuellement."
+    },
+    "degree2": {
+      "title": "Licence en Informatique",
+      "date": "2017 - 2020",
+      "institution": "Université de Lyon",
+      "description": "Formation généraliste en informatique avec une spécialisation en développement logiciel et bases de données."
+    },
+    "degree3": {
+      "title": "Baccalauréat Scientifique",
+      "date": "2014 - 2017",
+      "institution": "Lycée International de Lyon",
+      "description": "Option Mathématiques et Sciences de l'Ingénieur, mention Très Bien."
+    }
+  },
+  "experience": {
+    "title": "MON EXPÉRIENCE PROFESSIONNELLE",
+    "description": "Voici mes expériences professionnelles les plus significatives.",
+    "job1": {
+      "title": "Développeur Full Stack",
+      "company": "TechInnovate",
+      "date": "Janvier 2022 - Présent",
+      "description": "Développement d'applications web modernes avec React, TypeScript et Node.js. Travail en équipe agile avec méthodologie Scrum.",
+      "skills": ["React", "TypeScript", "Node.js", "MongoDB", "Docker"]
+    },
+    "job2": {
+      "title": "Développeur Front-End",
+      "company": "WebSolutions",
+      "date": "Juin 2020 - Décembre 2021",
+      "description": "Conception et développement d'interfaces utilisateur réactives et accessibles pour des clients variés.",
+      "skills": ["JavaScript", "React", "CSS/SASS", "Responsive Design", "UI/UX"]
+    },
+    "job3": {
+      "title": "Stagiaire Développeur",
+      "company": "StartupVision",
+      "date": "Janvier 2020 - Mai 2020",
+      "description": "Stage de fin d'études axé sur le développement d'une application mobile avec React Native.",
+      "skills": ["React Native", "JavaScript", "API REST", "Git"]
+    }
+  },
   "projects": {
     "title": "MES TRAVAUX RÉCENTS",
     "description": "Voici quelques projets sur lesquels j'ai travaillé récemment.",
     "viewProject": "Voir le Projet",
-    "viewCode": "Voir le Code"
+    "viewDetails": "Voir les détails",
+    "viewCode": "Voir le Code",
+    "viewDemo": "Voir la démo",
+    "searchPlaceholder": "Rechercher des projets...",
+    "noResults": "Aucun projet ne correspond à votre recherche."
   },
   "resume": {
     "title": "MON CV",
+    "button": "Voir mon CV",
     "download": "Télécharger CV"
   },
   "contact": {

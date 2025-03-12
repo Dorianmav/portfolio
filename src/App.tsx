@@ -5,10 +5,15 @@ import LanguageSwitcher from "./components/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 import { ProjectsProvider } from "./context/ProjectsContext";
 import { SingleProjectProvider } from "./context/SingleProjectContext";
-import ProjectsGrid from "./components/Projects/ProjectsGrid";
+import Projects from "./components/Projects/Projects";
 import ProjectInfo from "./components/Projects/ProjectInfo";
 import { Routes, Route } from "react-router-dom";
 import AnimationSection from "./components/AnimationSection";
+import Education from "./components/Education/Education";
+import Experience from "./components/Experience/Experience";
+import ResumeButton from "./components/ResumeButton/ResumeButton";
+import { motion } from "framer-motion";
+import { themeColors } from "./theme/colors";
 
 // Composant pour la page d'accueil
 const HomePage = () => {
@@ -16,36 +21,70 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="container mx-auto p-4 md:p-6 mb-2">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="container mx-auto p-4 md:p-6 mb-2"
+      >
         <div className="flex justify-between items-center">
           <div className="flex">
-            <h2 className="text-3xl font-bold text-center text-primary-dark dark:text-primary-light">
+            <motion.h2 
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl font-bold text-center"
+              style={{ color: themeColors.primary }}
+            >
               {t("home.greeting")}
-            </h2>
+            </motion.h2>
           </div>
           <LanguageSwitcher />
         </div>
-      </div>
+      </motion.div>
 
-      <div className="container mx-auto p-4 md:p-6 mt-2">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        className="container mx-auto p-4 md:p-6 mt-2"
+      >
         <div className="flex flex-col md:flex-row gap-8 items-center">
-          <div className="md:w-1/2">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">
+          <motion.div 
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="md:w-1/2"
+          >
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{ color: themeColors.primary }}
+            >
               {t("home.intro")}
             </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
+            <p 
+              className="text-lg leading-relaxed text-justify"
+              style={{ color: themeColors.text }}
+            >
               {t("home.description")}
             </p>
-          </div>
-          <div className="md:w-1/2">
+            <ResumeButton />
+          </motion.div>
+          <motion.div 
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="md:w-1/2"
+          >
             <AnimationSection />
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       <Stack />
-
-      <ProjectsGrid />
+      <Education />
+      <Experience />
+      <Projects />
     </>
   );
 };
@@ -54,7 +93,7 @@ function App() {
   const { t } = useTranslation();
 
   return (
-    <>
+    <div style={{ backgroundColor: themeColors.background, minHeight: '100vh' }}>
       <ProjectsProvider>
         <SingleProjectProvider>
           <Routes>
@@ -62,7 +101,9 @@ function App() {
             <Route
               path="/projects/:id"
               element={
-                <div className="container mx-auto p-4 md:p-6">
+                <div 
+                  className="container mx-auto p-4 md:p-6"
+                >
                   <ProjectInfo />
                 </div>
               }
@@ -71,10 +112,21 @@ function App() {
         </SingleProjectProvider>
       </ProjectsProvider>
 
-      <p className="read-the-docs mt-4 text-center">
-        {t("footer.designed")} Dorianmav
-      </p>
-    </>
+      <motion.footer
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="py-6 mt-8"
+        style={{ backgroundColor: themeColors.secondary }}
+      >
+        <p 
+          className="read-the-docs text-center"
+          style={{ color: themeColors.textLight }}
+        >
+          {t("footer.designed")} Dorianmav
+        </p>
+      </motion.footer>
+    </div>
   );
 }
 
