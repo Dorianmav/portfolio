@@ -65,14 +65,22 @@
     }
   },
   "projects": {
-    "title": "MES TRAVAUX RÉCENTS",
+    "title": "MES TRAVAUX",
+    "subtitle": "Mes travaux récents",
     "description": "Voici quelques projets sur lesquels j'ai travaillé récemment.",
-    "viewProject": "Voir le Projet",
+    "viewAll": "Tous voir",
+    "back": "Retour",
     "viewDetails": "Voir les détails",
     "viewCode": "Voir le Code",
     "viewDemo": "Voir la démo",
     "searchPlaceholder": "Rechercher des projets...",
-    "noResults": "Aucun projet ne correspond à votre recherche."
+    "noResults": "Aucun projet ne correspond à votre recherche.",
+    "filters": "Filtres",
+    "categories": "Catégories",
+    "resetFilters": "Réinitialiser les filtres",
+    "sortNewest": "Plus récent",
+    "sortOldest": "Plus ancien",
+    "sortAlphabetical": "Alphabétique"
   },
   "resume": {
     "title": "MON CV",
@@ -88,7 +96,7 @@
   },
   "footer": {
     "designed": "Conçu et développé par",
-    "copyright": "Copyright © 2023"
+    "copyright": "Copyright 2023"
   },
   "language": {
     "english": "Anglais",

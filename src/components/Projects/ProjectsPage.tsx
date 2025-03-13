@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiSearch, FiFilter, FiX } from "react-icons/fi";
-import { HiOutlineSortAscending, HiOutlineSortDescending } from "react-icons/hi";
+import { FiSearch, FiFilter, FiX, FiArrowLeft } from "react-icons/fi";
 import { useProjectsContext } from "../../context/ProjectsContext";
 import { Project } from "../../types/Project";
 import SingleProject from "./SingleProject/SingleProject";
+import { Link } from "react-router-dom";
 
 /**
  * Page principale des projets avec filtres et recherche améliorés
@@ -19,6 +19,7 @@ const ProjectsPage: React.FC = () => {
     selectProject,
     setSelectProject,
   } = useProjectsContext();
+  const topRef = useRef<HTMLDivElement>(null);
 
   const [categories, setCategories] = useState<string[]>([]);
   const [activeFilter, setActiveFilter] = useState<string>("all");
@@ -31,6 +32,13 @@ const ProjectsPage: React.FC = () => {
     const uniqueCategories = ["all", ...new Set(projects.map((project) => project.category))];
     setCategories(uniqueCategories);
   }, [projects]);
+
+  // Défiler vers le haut de la page lorsque le composant est monté
+  useEffect(() => {
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
   // Filtrer et trier les projets
   useEffect(() => {
@@ -107,11 +115,26 @@ const ProjectsPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen overflow-x-hidden p-8" style={{ backgroundColor: colors.background }}>
+    <div ref={topRef} className="flex flex-col items-center justify-start min-h-screen overflow-x-hidden p-8" style={{ backgroundColor: colors.background }}>
       <div className="w-full flex flex-col items-center justify-center">
-        <h1 className="text-5xl font-bold font-sans mb-12" style={{ color: colors.primary }}>
-          {t("projects.title")}
-        </h1>
+        <div className="w-full max-w-6xl flex items-center justify-between mb-8">
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 py-2 px-4 rounded-lg hover:opacity-90 transition-colors"
+            style={{ 
+              backgroundColor: colors.secondary,
+              color: colors.textLight,
+              textDecoration: 'none'
+            }}
+          >
+            <FiArrowLeft />
+            <span>{t("projects.back")}</span>
+          </Link>
+          <h1 className="text-5xl font-bold font-sans" style={{ color: colors.primary }}>
+            {t("projects.title")}
+          </h1>
+          <div className="w-[100px]"></div> {/* Élément vide pour équilibrer le layout */}
+        </div>
         
         <div className="w-full max-w-6xl mb-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
@@ -154,7 +177,6 @@ const ProjectsPage: React.FC = () => {
                 <FiFilter />
                 <span>{t("projects.filters")}</span>
               </button>
-              
               <select
                 value={sortOption}
                 onChange={handleSortChange}
@@ -218,7 +240,7 @@ const ProjectsPage: React.FC = () => {
           </AnimatePresence>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-10 w-[90%] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center justify-center gap-6 w-[95%] mx-auto">
           <AnimatePresence>
             {filteredProjects.length > 0 ? (
               filteredProjects.map((project) => (
@@ -226,11 +248,12 @@ const ProjectsPage: React.FC = () => {
                   key={project.id.toString()}
                   id={project.id.toString()}
                   name={project.title}
-                  desc={project.description || ""}
+                  desc={project.description ?? ""}
                   tags={project.technologies || []}
-                  code={project.githubLink || "#"}
-                  demo={project.demoLink || "#"}
+                  code={project.githubLink ?? "#"}
+                  demo={project.demoLink ?? "#"}
                   image={project.img || ""}
+                  variant="grid"
                 />
               ))
             ) : (

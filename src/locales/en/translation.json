@@ -65,14 +65,22 @@
     }
   },
   "projects": {
-    "title": "MY RECENT WORK",
+    "title": "MY WORK",
+    "subtitle": "My recent work",
     "description": "Here are some projects I've worked on recently.",
-    "viewProject": "View Project",
+    "viewProject": "View All",
     "viewDetails": "View Details",
     "viewCode": "View Code",
     "viewDemo": "View Demo",
     "searchPlaceholder": "Search projects...",
-    "noResults": "No projects match your search."
+    "noResults": "No projects match your search.",
+    "filters": "Filters",
+    "categories": "Categories",
+    "resetFilters": "Reset Filters",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest",
+    "sortAlphabetical": "Alphabetical",
+    "back": "Back"
   },
   "resume": {
     "title": "MY RESUME",
@@ -88,7 +96,7 @@
   },
   "footer": {
     "designed": "Designed and developed by",
-    "copyright": "Copyright © 2023"
+    "copyright": "Copyright 2023"
   },
   "language": {
     "english": "English",
