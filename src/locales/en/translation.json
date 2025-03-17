@@ -9,23 +9,83 @@
   "home": {
     "greeting": "Welcome to my Portfolio!",
     "intro": "Who I am",
-    "description": "I'm a young developer with two years' actual programming experience. Passionate about manga, video games, sports and development in Java and TypeScript, I enjoy taking on technical challenges and continuously improving my skills. Motivated and rigorous, I'm always ready to learn new technologies and collaborate effectively in a team to complete innovative projects. My goal is to design high-performance, optimized solutions while contributing to a dynamic and stimulating work environment."
+    "description": "I am a young developer with two years of real programming experience. Passionate about manga, video games, sports, and development in Java and TypeScript, I enjoy tackling technical challenges and continuously improving my skills. Motivated and rigorous, I am always ready to learn new technologies and collaborate effectively in teams to successfully carry out innovative projects. My goal is to design high-performance and optimized solutions while contributing to a dynamic and stimulating work environment."
   },
   "stack": {
-    "title": "KNOW WHO I AM",
-    "description": "I'm a passionate Full Stack Web Developer with experience in JavaScript, React.js, Node.js, and many other modern technologies.",
-    "techstack": "Professional Skillset",
+    "title": "WHO I AM",
+    "description": "I am a passionate full stack web developer with experience in JavaScript, React.js, Node.js, and many other modern technologies.",
+    "techstack": "Professional Skills",
     "toolstack": "Tools I Use"
   },
+  "education": {
+    "title": "MY ACADEMIC JOURNEY",
+    "description": "Here is my educational background and training.",
+    "degree1": {
+      "title": "Master's in Web Development",
+      "date": "2020 - 2022",
+      "institution": "University of Paris",
+      "description": "Specialization in modern web application development with React and Node.js. Projects completed in teams and individually."
+    },
+    "degree2": {
+      "title": "Bachelor's in Computer Science",
+      "date": "2017 - 2020",
+      "institution": "University of Lyon",
+      "description": "General computer science education with a specialization in software development and databases."
+    },
+    "degree3": {
+      "title": "Scientific Baccalaureate",
+      "date": "2014 - 2017",
+      "institution": "International High School of Lyon",
+      "description": "Mathematics and Engineering Sciences option, with highest honors."
+    }
+  },
+  "experience": {
+    "title": "MY PROFESSIONAL EXPERIENCE",
+    "description": "Here are my most significant professional experiences.",
+    "job1": {
+      "title": "Full Stack Developer",
+      "company": "TechInnovate",
+      "date": "January 2022 - Present",
+      "description": "Development of modern web applications with React, TypeScript, and Node.js. Agile team work with Scrum methodology.",
+      "skills": ["React", "TypeScript", "Node.js", "MongoDB", "Docker"]
+    },
+    "job2": {
+      "title": "Front-End Developer",
+      "company": "WebSolutions",
+      "date": "June 2020 - December 2021",
+      "description": "Design and development of responsive and accessible user interfaces for various clients.",
+      "skills": ["JavaScript", "React", "CSS/SASS", "Responsive Design", "UI/UX"]
+    },
+    "job3": {
+      "title": "Developer Intern",
+      "company": "StartupVision",
+      "date": "January 2020 - May 2020",
+      "description": "End-of-studies internship focused on developing a mobile application with React Native.",
+      "skills": ["React Native", "JavaScript", "REST API", "Git"]
+    }
+  },
   "projects": {
-    "title": "MY RECENT WORKS",
-    "description": "Here are a few projects I've worked on recently.",
-    "viewProject": "View Project",
-    "viewCode": "View Code"
+    "title": "MY WORK",
+    "subtitle": "My recent work",
+    "description": "Here are some projects I've worked on recently.",
+    "viewProject": "View All",
+    "viewDetails": "View Details",
+    "viewCode": "View Code",
+    "viewDemo": "View Demo",
+    "searchPlaceholder": "Search projects...",
+    "noResults": "No projects match your search.",
+    "filters": "Filters",
+    "categories": "Categories",
+    "resetFilters": "Reset Filters",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest",
+    "sortAlphabetical": "Alphabetical",
+    "back": "Back"
   },
   "resume": {
     "title": "MY RESUME",
-    "download": "Download CV"
+    "button": "View my Resume",
+    "download": "Download Resume"
   },
   "contact": {
     "title": "CONTACT ME",
@@ -35,8 +95,8 @@
     "send": "Send"
   },
   "footer": {
-    "designed": "Designed and Developed by",
-    "copyright": "Copyright © 2023"
+    "designed": "Designed and developed by",
+    "copyright": "Copyright 2023"
   },
   "language": {
     "english": "English",

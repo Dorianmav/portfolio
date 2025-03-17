@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Techstack from "./Techstack";
 import Toolstack from "./Toolstack";
 import { useTranslation } from "react-i18next";
+import { themeColors } from "../../theme/colors";
 
 /**
  * Stack component that displays information stack the developer's
@@ -12,7 +13,7 @@ const Stack: React.FC = () => {
   const { t } = useTranslation();
   
   return (
-    <Container fluid className="stack-section">
+    <Container fluid className="stack-section" style={{ backgroundColor: themeColors.background }}>
       <Container>
         <Row style={{ justifyContent: "center", padding: "10px" }}>
           <Col
@@ -23,13 +24,13 @@ const Stack: React.FC = () => {
               paddingBottom: "50px",
             }}
           >
-            <h1 className="text-4xl font-bold pb-5">
-              {t('stack.techstack')} <strong className="text-purple-500">Skillset</strong>
+            <h1 className="text-4xl font-bold pb-5" style={{ color: themeColors.primary }}>
+              {t('stack.techstack')} <strong style={{ color: themeColors.highlight }}>Skillset</strong>
             </h1>
             <Techstack />
 
-            <h1 className="text-4xl font-bold pb-5">
-              <strong className="text-purple-500">{t('stack.toolstack')}</strong>
+            <h1 className="text-4xl font-bold pb-5" style={{ color: themeColors.primary }}>
+              <strong style={{ color: themeColors.highlight }}>{t('stack.toolstack')}</strong>
             </h1>
             <Toolstack />
           </Col>
