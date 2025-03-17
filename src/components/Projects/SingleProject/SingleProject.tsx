@@ -63,7 +63,7 @@ const getDescriptionClasses = (
   variant: "grid" | "default",
   isHovered: boolean
 ) => {
-  const descriptionClasses = `absolute left-0 top-[25%] w-[95%] rounded-r-xl overflow-y-auto transition-transform duration-700 ease-in-out transform ${
+  const descriptionClasses = `absolute left-0 top-[10%] w-[95%] rounded-r-xl overflow-y-auto transition-transform duration-700 ease-in-out transform ${
     isHovered ? "translate-x-[-2%]" : "-translate-x-full"
   }`;
 
