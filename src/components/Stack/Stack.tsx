@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Techstack from "./Techstack";
 import Toolstack from "./Toolstack";
 import { useTranslation } from "react-i18next";
-import { themeColors } from "../../theme/colors";
+import { useTheme } from "../../context/ThemeContext";
 
 /**
  * Stack component that displays information stack the developer's
@@ -11,6 +11,7 @@ import { themeColors } from "../../theme/colors";
  */
 const Stack: React.FC = () => {
   const { t } = useTranslation();
+  const { themeColors } = useTheme();
   
   return (
     <Container fluid className="stack-section" style={{ backgroundColor: themeColors.background }}>

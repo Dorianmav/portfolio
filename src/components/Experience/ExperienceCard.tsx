@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Badge } from "react-bootstrap";
-import { themeColors } from "../../theme/colors";
+import { useTheme } from "../../context/ThemeContext";
 
 interface ExperienceCardProps {
   title: string;
@@ -23,6 +23,8 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   skills,
   position,
 }) => {
+  const { themeColors } = useTheme();
+  
   // Animation variants
   const cardVariants = {
     hidden: { opacity: 0, x: position === "left" ? -50 : 50 },

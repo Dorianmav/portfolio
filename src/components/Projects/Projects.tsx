@@ -6,11 +6,12 @@ import "./Projects.css";
 import { useProjectsContext } from "../../context/ProjectsContext";
 import { Project } from "../../types/Project";
 import SingleProject from "./SingleProject/SingleProject";
-import { themeColors } from "../../theme/colors";
+import { useTheme } from "../../context/ThemeContext";
 
 const Projects: React.FC = () => {
   const { t } = useTranslation();
   const { projects } = useProjectsContext();
+  const { themeColors } = useTheme();
   const [isHovered, setIsHovered] = useState(false);
 
   const viewAllBtnStyle = {

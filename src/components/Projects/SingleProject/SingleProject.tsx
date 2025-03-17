@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaPlay, FaCode } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
-import { themeColors } from "../../../theme/colors";
+import { useTheme } from "../../../context/ThemeContext";
 
 interface SingleProjectProps {
   id: string;
@@ -101,6 +101,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({
   variant = "default",
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { themeColors } = useTheme();
 
   // Calculer les groupes de tags
   const chunkSize = variant === "grid" ? 3 : 4;
@@ -125,14 +126,15 @@ const SingleProject: React.FC<SingleProjectProps> = ({
       : "font-medium text-xs py-1 px-2 rounded-md";
 
   // Ajuster l'espace image par rapport au titre
-  const imageClasses =
-    variant === "grid"
-      ? `w-full h-[60%] object-cover rounded transition-all duration-500 mt-1 ${
-          isHovered ? "opacity-0" : "opacity-100"
-        }`
-      : `w-full h-3/5 object-cover rounded transition-all duration-500 ${
-          isHovered ? "opacity-0" : "opacity-100"
-        }`;
+  // Définir la base des classes d'image
+  const baseImageClasses = `w-full h-full object-cover rounded transition-all duration-500 ${
+    isHovered ? "opacity-0" : "opacity-100"
+  }`;
+  
+  // Ajouter la marge selon le variant
+  const imageClasses = variant === "grid"
+    ? `${baseImageClasses} mt-2`
+    : `${baseImageClasses} mt-4`;
 
   return (
     <Fade direction="up" triggerOnce>
@@ -146,25 +148,34 @@ const SingleProject: React.FC<SingleProjectProps> = ({
       >
         {/* Contenu principal */}
         <div className="flex flex-col items-center justify-start w-full h-full z-10">
-          {variant === "grid" ? (
-            <h3
-              id={name.replace(" ", "-").toLowerCase()}
-              className={`${titleClasses} mt-0 pt-0`} // Ajout de mt-0 pt-0
-              style={{ color: themeColors.textLight }}
-            >
-              {name}
-            </h3>
-          ) : (
-            <h2
-              id={name.replace(" ", "-").toLowerCase()}
-              className={`${titleClasses} mt-0 pt-0`} // Ajout de mt-0 pt-0
-              style={{ color: themeColors.textLight }}
-            >
-              {name}
-            </h2>
-          )}
-          <img src={image} alt={name} className={imageClasses} />
-          <div className="flex items-center justify-between w-full mt-3 z-20 relative">
+          {/* Conteneur de titre avec hauteur fixe */}
+          <div className="h-[60px] flex items-center justify-center w-full">
+            {variant === "grid" ? (
+              <h3
+                id={name.replace(" ", "-").toLowerCase()}
+                className={`${titleClasses} mt-0 pt-0`} // Ajout de mt-0 pt-0
+                style={{ color: themeColors.textLight }}
+              >
+                {name}
+              </h3>
+            ) : (
+              <h2
+                id={name.replace(" ", "-").toLowerCase()}
+                className={`${titleClasses} mt-0 pt-0`} // Ajout de mt-0 pt-0
+                style={{ color: themeColors.textLight }}
+              >
+                {name}
+              </h2>
+            )}
+          </div>
+
+          {/* Conteneur d'image avec hauteur fixe */}
+          <div className={variant === "grid" ? "h-[60%] w-full" : "h-3/5 w-full"}>
+            <img src={image} alt={name} className={imageClasses} />
+          </div>
+
+          {/* Conteneur de boutons avec hauteur fixe */}
+          <div className="flex items-center justify-between w-full mt-auto z-20 relative">
             {/* Bouton Demo - fixe */}
             <a
               href={demo}
@@ -211,15 +222,17 @@ const SingleProject: React.FC<SingleProjectProps> = ({
           </div>
         </div>
 
-        {/* Description - positionnée plus bas */}
+        {/* Description qui apparaît au survol */}
         <div
           className={descriptionClasses}
-          style={{
-            background: themeColors.secondary,
-            color: themeColors.textLight,
-          }}
+          style={{ backgroundColor: themeColors.secondary }}
         >
-          <p className={descTextClasses}>{desc}</p>
+          <p
+            className={descTextClasses}
+            style={{ color: themeColors.textLight }}
+          >
+            {desc}
+          </p>
         </div>
 
         {/* Tags - positionnés au niveau du bouton code, sans scrollbar */}

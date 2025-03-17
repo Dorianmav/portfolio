@@ -3,13 +3,14 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import ExperienceCard from "./ExperienceCard";
-import { themeColors } from "../../theme/colors";
+import { useTheme } from "../../context/ThemeContext";
 
 /**
  * Composant qui affiche la section expérience professionnelle
  */
 const Experience: React.FC = () => {
   const { t } = useTranslation();
+  const { themeColors } = useTheme();
 
   // Animation variants
   const containerVariants = {

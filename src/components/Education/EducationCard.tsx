@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { themeColors } from "../../theme/colors";
+import { useTheme } from "../../context/ThemeContext";
 
 interface EducationCardProps {
   title: string;
@@ -20,6 +20,8 @@ const EducationCard: React.FC<EducationCardProps> = ({
   description,
   position,
 }) => {
+  const { themeColors } = useTheme();
+  
   // Animation variants
   const cardVariants = {
     hidden: { opacity: 0, x: position === "left" ? -50 : 50 },

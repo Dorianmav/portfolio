@@ -1,8 +1,10 @@
 import React from 'react';
 import DisplayLottie from './DisplayLottie';
-import { themeColors } from '../theme/colors';
+import { useTheme } from '../context/ThemeContext';
 
 const AnimationSection: React.FC = () => {
+  const { themeColors } = useTheme();
+  
   return (
     <div className="flex items-center justify-center py-10" style={{ backgroundColor: themeColors.background }}>
       <div className="w-full max-w-md" style={{ 

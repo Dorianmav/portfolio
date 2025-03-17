@@ -101,5 +101,10 @@
   "language": {
     "english": "English",
     "french": "French"
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light mode",
+    "dark": "Dark mode"
   }
 }

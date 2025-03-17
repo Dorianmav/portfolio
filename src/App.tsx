@@ -12,11 +12,13 @@ import Education from "./components/Education/Education";
 import Experience from "./components/Experience/Experience";
 import ResumeButton from "./components/ResumeButton/ResumeButton";
 import { motion } from "framer-motion";
-import { themeColors } from "./theme/colors";
+import { ThemeProvider, useTheme } from "./context/ThemeContext";
+import ThemeToggle from "./components/ThemeToggle";
 
 // Composant pour la page d'accueil
 const HomePage = () => {
   const { t } = useTranslation();
+  const { themeColors } = useTheme();
 
   return (
     <>
@@ -38,7 +40,10 @@ const HomePage = () => {
               {t("home.greeting")}
             </motion.h2>
           </div>
-          <LanguageSwitcher />
+          <div className="flex items-center space-x-4">
+            <ThemeToggle />
+            <LanguageSwitcher />
+          </div>
         </div>
       </motion.div>
 
@@ -84,8 +89,9 @@ const HomePage = () => {
   );
 };
 
-function App() {
+function AppContent() {
   const { t } = useTranslation();
+  const { themeColors } = useTheme();
 
   return (
     <div
@@ -137,6 +143,14 @@ function App() {
         </div>
       </motion.footer>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

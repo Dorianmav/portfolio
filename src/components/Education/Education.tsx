@@ -3,13 +3,14 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import EducationCard from "./EducationCard";
-import { themeColors } from "../../theme/colors";
+import { useTheme } from "../../context/ThemeContext";
 
 /**
  * Composant qui affiche la section éducation avec les diplômes et formations
  */
 const Education: React.FC = () => {
   const { t } = useTranslation();
+  const { themeColors } = useTheme();
 
   // Animation variants
   const containerVariants = {
