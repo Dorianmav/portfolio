@@ -10,6 +10,7 @@ import Timeline from "./components/TimelinePreview";
 import Header from "./components/Header/Header";
 import Recommendation from "./components/Recommendation";
 import Contact from "./components/Contact/Contact";
+import Footer from "./components/Footer/Footer";
 
 // Composant pour la section d'accueil
 const HomeSection: React.FC = () => {
@@ -94,17 +95,18 @@ const AppContent: React.FC = () => {
 
   return (
     <div
-      className="app min-h-screen"
+      className="app min-h-screen flex flex-col"
       style={{ backgroundColor: themeColors.background }}
     >
       <Header />
-      <div className="container mx-auto px-4 pt-20">
+      <div className="container mx-auto px-4 pt-20 flex-grow">
         <HomeSection />
         <TimelineSection />
         <StackSection />
         <RecommendationSection />
         <ContactSection />
       </div>
+      <Footer />
     </div>
   );
 };

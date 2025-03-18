@@ -3,7 +3,9 @@
     "home": "Home",
     "timeline": "Journey",
     "stack": "Stack",
-    "recommendations": "Recommendations"
+    "recommendations": "Recommendations",
+    "contact": "Contact",
+    "links": "Quick links"
   },
 
   "accessibility": {
@@ -147,7 +149,9 @@
 
   "footer": {
     "designed": "Designed and developed by",
-    "copyright": "Copyright 2023"
+    "copyright": "All rights reserved",
+    "links": "Quick links",
+    "social": "Social media"
   },
 
   "language": {

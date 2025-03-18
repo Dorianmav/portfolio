@@ -4,7 +4,8 @@
     "timeline": "Parcours",
     "stack": "Stack",
     "recommendations": "Recommandations",
-    "contact": "Contact"
+    "contact": "Contact",
+    "links": "Liens rapides"
   },
 
   "accessibility": {
@@ -148,7 +149,9 @@
 
   "footer": {
     "designed": "Conçu et développé par",
-    "copyright": "Copyright 2023"
+    "copyright": "Tous droits réservés",
+    "links": "Liens rapides",
+    "social": "Réseaux sociaux"
   },
 
   "language": {
