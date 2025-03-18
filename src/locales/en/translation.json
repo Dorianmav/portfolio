@@ -2,7 +2,8 @@
   "nav": {
     "home": "Home",
     "timeline": "Journey",
-    "stack": "Stack"
+    "stack": "Stack",
+    "recommendations": "Recommendations"
   },
 
   "accessibility": {
@@ -11,7 +12,9 @@
     "darkMode": "Dark mode",
     "closeMenu": "Close menu",
     "openMenu": "Open menu",
-    "codingAnimation": "Coding animation"
+    "codingAnimation": "Animation of a person coding",
+    "previousRecommendation": "Previous recommendation",
+    "nextRecommendation": "Next recommendation"
   },
 
   "home": {
@@ -108,18 +111,38 @@
     "back": "Back"
   },
 
-  "resume": {
-    "title": "MY RESUME",
-    "button": "View my Resume",
-    "download": "Download Resume"
+  "recommendations": {
+    "title": "Recommendations",
+    "subtitle": "What my colleagues and clients say"
   },
 
   "contact": {
-    "title": "CONTACT ME",
+    "title": "Contact",
+    "subtitle": "Feel free to contact me to discuss your projects",
     "name": "Name",
+    "namePlaceholder": "Your name",
     "email": "Email",
+    "emailPlaceholder": "your.email@example.com",
     "message": "Message",
-    "send": "Send"
+    "messagePlaceholder": "Your message...",
+    "send": "Send",
+    "sent": "Sent!",
+    "errorAllFields": "Please fill in all fields",
+    "errorEmail": "Please enter a valid email address",
+    "errorSubmit": "An error occurred. Please try again.",
+    "emailTitle": "Email",
+    "phoneTitle": "Phone",
+    "addressTitle": "Address",
+    "socialTitle": "Social Media"
+  },
+
+  "resume": {
+    "title": "MY RESUME",
+    "button": "View my Resume",
+    "download": "Download Resume",
+    "documentDescription": "PDF Document",
+    "pdfNotSupported": "Your browser does not support PDF display. Please download the document to view it.",
+    "close": "Close"
   },
 
   "footer": {

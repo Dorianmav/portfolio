@@ -2,7 +2,9 @@
   "nav": {
     "home": "Accueil",
     "timeline": "Parcours",
-    "stack": "Stack"
+    "stack": "Stack",
+    "recommendations": "Recommandations",
+    "contact": "Contact"
   },
 
   "accessibility": {
@@ -11,7 +13,9 @@
     "darkMode": "Mode sombre",
     "closeMenu": "Fermer le menu",
     "openMenu": "Ouvrir le menu",
-    "codingAnimation": "Animation de codage"
+    "codingAnimation": "Animation d'une personne qui code",
+    "previousRecommendation": "Recommandation précédente",
+    "nextRecommendation": "Recommandation suivante"
   },
 
   "home": {
@@ -108,18 +112,38 @@
     "sortAlphabetical": "Alphabétique"
   },
 
-  "resume": {
-    "title": "MON CV",
-    "button": "Voir mon CV",
-    "download": "Télécharger CV"
+  "recommendations": {
+    "title": "Recommandations",
+    "subtitle": "Ce que disent mes collègues et clients"
   },
 
   "contact": {
-    "title": "CONTACTEZ-MOI",
+    "title": "Contact",
+    "subtitle": "N'hésitez pas à me contacter pour discuter de vos projets",
     "name": "Nom",
+    "namePlaceholder": "Votre nom",
     "email": "Email",
+    "emailPlaceholder": "votre.email@exemple.com",
     "message": "Message",
-    "send": "Envoyer"
+    "messagePlaceholder": "Votre message...",
+    "send": "Envoyer",
+    "sent": "Envoyé !",
+    "errorAllFields": "Veuillez remplir tous les champs",
+    "errorEmail": "Veuillez entrer une adresse email valide",
+    "errorSubmit": "Une erreur est survenue. Veuillez réessayer.",
+    "emailTitle": "Email",
+    "phoneTitle": "Téléphone",
+    "addressTitle": "Adresse",
+    "socialTitle": "Réseaux sociaux"
+  },
+
+  "resume": {
+    "title": "MON CV",
+    "button": "Voir mon CV",
+    "download": "Télécharger CV",
+    "documentDescription": "Document PDF",
+    "pdfNotSupported": "Votre navigateur ne prend pas en charge l'affichage des PDF. Veuillez télécharger le document pour le visualiser.",
+    "close": "Fermer"
   },
 
   "footer": {
