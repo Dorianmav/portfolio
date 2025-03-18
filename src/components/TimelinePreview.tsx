@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaGraduationCap, FaBriefcase, FaLaptopCode, FaPlay, FaCode } from "react-icons/fa";
 import { timelineData } from "../data/timelineDatas";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../context/useTheme";
 
 const Timeline = () => {
   const { t } = useTranslation();
