@@ -1,22 +1,45 @@
 {
-  "header": {
+  "nav": {
     "home": "Accueil",
-    "about": "À propos",
-    "projects": "Projets",
-    "resume": "CV",
-    "contact": "Contact"
+    "timeline": "Parcours",
+    "stack": "Stack"
   },
+
+  "accessibility": {
+    "backToTop": "Retour en haut",
+    "lightMode": "Mode clair",
+    "darkMode": "Mode sombre",
+    "closeMenu": "Fermer le menu",
+    "openMenu": "Ouvrir le menu",
+    "codingAnimation": "Animation de codage"
+  },
+
   "home": {
     "greeting": "Bienvenue sur mon Portfolio !",
     "intro": "Qui suis-je",
     "description": "Je suis un jeune développeur avec deux années d'expérience réelle en programmation. Passionné par les mangas, les jeux vidéo, le sport et le développement en Java et TypeScript, j'aime relever des défis techniques et améliorer mes compétences en continu. Motivé et rigoureux, je suis toujours prêt à apprendre de nouvelles technologies et à collaborer efficacement en équipe pour mener à bien des projets innovants. Mon objectif est de concevoir des solutions performantes et optimisées tout en contribuant à un environnement de travail dynamique et stimulant."
   },
+
+  "timeline": {
+    "title": "MON PARCOURS",
+    "filters": {
+      "all": "Tout",
+      "experience": "Expérience",
+      "education": "Formation",
+      "project": "Projet"
+    },
+    "details": "Détails",
+    "technologies": "Technologies",
+    "location": "Lieu",
+    "demo": "Voir la démo",
+    "git": "Voir le code"
+  },
+
   "stack": {
-    "title": "QUI SUIS-JE",
-    "description": "Je suis un développeur web full stack passionné avec de l'expérience en JavaScript, React.js, Node.js et de nombreuses autres technologies modernes.",
     "techstack": "Compétences Professionnelles",
     "toolstack": "Outils que j'utilise"
   },
+
   "education": {
     "title": "MON PARCOURS ACADÉMIQUE",
     "description": "Voici mon parcours éducatif et mes formations.",
@@ -39,6 +62,7 @@
       "description": "Option Mathématiques et Sciences de l'Ingénieur, mention Très Bien."
     }
   },
+
   "experience": {
     "title": "MON EXPÉRIENCE PROFESSIONNELLE",
     "description": "Voici mes expériences professionnelles les plus significatives.",
@@ -64,6 +88,7 @@
       "skills": ["React Native", "JavaScript", "API REST", "Git"]
     }
   },
+
   "projects": {
     "title": "MES TRAVAUX",
     "subtitle": "Mes travaux récents",
@@ -82,25 +107,13 @@
     "sortOldest": "Plus ancien",
     "sortAlphabetical": "Alphabétique"
   },
-  "timeline": {
-    "title": "MON PARCOURS",
-    "filters": {
-      "all": "Tout",
-      "experience": "Expérience",
-      "education": "Formation",
-      "project": "Projet"
-    },
-    "details": "Détails",
-    "technologies": "Technologies",
-    "location": "Lieu",
-    "demo": "Voir la démo",
-    "git": "Voir le code"
-  },
+
   "resume": {
     "title": "MON CV",
     "button": "Voir mon CV",
     "download": "Télécharger CV"
   },
+
   "contact": {
     "title": "CONTACTEZ-MOI",
     "name": "Nom",
@@ -108,14 +121,17 @@
     "message": "Message",
     "send": "Envoyer"
   },
+
   "footer": {
     "designed": "Conçu et développé par",
     "copyright": "Copyright 2023"
   },
+
   "language": {
     "english": "Anglais",
     "french": "Français"
   },
+  
   "theme": {
     "toggle": "Changer de thème",
     "light": "Mode clair",
