@@ -8,5 +8,7 @@ export const themeColors = {
   accent: '#FCE38A',     // Jaune doux
   highlight: '#FFD3B5',  // Pêche clair
   text: '#333333',       // Texte foncé
-  textLight: '#ffffff'   // Texte clair
+  textLight: '#ffffff' ,  // Texte clair
+  card: '#ffffff',       // Couleur de la carte
+  border: '#E0E0E0'      // Couleur de la bordure
 };

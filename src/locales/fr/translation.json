@@ -82,6 +82,20 @@
     "sortOldest": "Plus ancien",
     "sortAlphabetical": "Alphabétique"
   },
+  "timeline": {
+    "title": "MON PARCOURS",
+    "filters": {
+      "all": "Tout",
+      "experience": "Expérience",
+      "education": "Formation",
+      "project": "Projet"
+    },
+    "details": "Détails",
+    "technologies": "Technologies",
+    "location": "Lieu",
+    "demo": "Voir la démo",
+    "git": "Voir le code"
+  },
   "resume": {
     "title": "MON CV",
     "button": "Voir mon CV",

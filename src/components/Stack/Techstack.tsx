@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Col, Row } from "react-bootstrap";
 import { DiJavascript1, DiNodejs, DiReact, DiJava } from "react-icons/di";
 import {
@@ -25,7 +25,7 @@ import { useTheme } from "../../context/ThemeContext";
 const Techstack: React.FC = () => {
   const { themeColors } = useTheme();
   return (
-    <IconContext.Provider value={{ color: themeColors.text }}>
+    <IconContext.Provider value={useMemo(() => ({ color: themeColors.text }), [themeColors.text])}>
       <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
         <Col
           xs={4}

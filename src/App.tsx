@@ -4,16 +4,17 @@ import Stack from "./components/Stack/Stack";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 import { ProjectsProvider } from "./context/ProjectsContext";
-import Projects from "./components/Projects/Projects";
+// import Projects from "./components/Projects/Projects";
 import ProjectsPage from "./components/Projects/ProjectsPage";
 import { Routes, Route } from "react-router-dom";
 import AnimationSection from "./components/AnimationSection";
-import Education from "./components/Education/Education";
-import Experience from "./components/Experience/Experience";
+// import Education from "./components/Education/Education";
+// import Experience from "./components/Experience/Experience";
 import ResumeButton from "./components/ResumeButton/ResumeButton";
 import { motion } from "framer-motion";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle";
+import Timeline from "./components/timelinePreview";
 
 // Composant pour la page d'accueil
 const HomePage = () => {
@@ -82,9 +83,10 @@ const HomePage = () => {
       </motion.div>
 
       <Stack />
-      <Education />
-      <Experience />
-      <Projects />
+      <Timeline />
+      {/* <Education /> */}
+      {/* <Experience /> */}
+      {/* <Projects /> */}
     </>
   );
 };
