@@ -27,6 +27,7 @@
 
   "timeline": {
     "title": "MY JOURNEY",
+    "description": "My academic, professional journey and projects",
     "filters": {
       "all": "All",
       "experience": "Experience",
@@ -36,6 +37,7 @@
     "details": "Details",
     "technologies": "Technologies",
     "location": "Location",
+    "link": "Link",
     "demo": "View Demo",
     "git": "View Code"
   },

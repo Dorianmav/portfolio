@@ -1,8 +1,45 @@
 import { useState } from "react";
-import { FaGraduationCap, FaBriefcase, FaLaptopCode, FaPlay, FaCode } from "react-icons/fa";
 import { timelineData } from "../data/timelineDatas";
+import { TimelineItem } from "../types/TimelineItem";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../context/useTheme";
+import { FaGraduationCap, FaBriefcase, FaCode, FaExternalLinkAlt, FaPlay, FaLaptopCode } from "react-icons/fa";
+
+/**
+ * Fonction pour trier les éléments de la timeline par date du plus récent au plus ancien
+ * @param items Les éléments de la timeline à trier
+ * @returns Les éléments triés
+ */
+const sortTimelineByDate = (items: TimelineItem[]): TimelineItem[] => {
+  const currentYear = new Date().getFullYear();
+  
+  return [...items].sort((a, b) => {
+    // Extraire l'année la plus récente de chaque date (format: "2023 - 2025" ou "2023" ou "2024 - Présent")
+    const getLatestYear = (dateStr: string): number => {
+      // Si la date contient "Présent", considérer l'année actuelle
+      if (dateStr.toLowerCase().includes("présent") || dateStr.toLowerCase().includes("present")) {
+        return currentYear;
+      }
+      
+      // Sinon extraire les années numériques
+      const years = dateStr.split(/\s*-\s*/)
+        .map(part => {
+          const yearRegex = /\d{4}/;
+          const match = yearRegex.exec(part);
+          return match ? parseInt(match[0]) : 0;
+        })
+        .filter(year => year > 0);
+      
+      return years.length > 0 ? Math.max(...years) : 0;
+    };
+    
+    const yearA = getLatestYear(a.date);
+    const yearB = getLatestYear(b.date);
+    
+    // Trier du plus récent au plus ancien
+    return yearB - yearA;
+  });
+};
 
 const Timeline = () => {
   const { t } = useTranslation();
@@ -14,10 +51,13 @@ const Timeline = () => {
   // État pour le filtre de catégorie
   const [activeFilter, setActiveFilter] = useState<string>("all");
 
+  // Trier les données de la timeline
+  const sortedTimelineData = sortTimelineByDate(timelineData);
+
   // Filtrer les éléments selon la catégorie sélectionnée
   const filteredItems = activeFilter === "all" 
-    ? timelineData 
-    : timelineData.filter(item => item.category === activeFilter);
+    ? sortedTimelineData 
+    : sortedTimelineData.filter(item => item.category === activeFilter);
 
   // Obtenir l'icône correspondant à la catégorie
   const getCategoryIcon = (category: string) => {
@@ -224,18 +264,47 @@ const Timeline = () => {
                           </div>
                         )}
                     
+                    {/* Lien */}
+                    {item.link && (
+                      <div className="mt-4">
+                        <h4
+                          className="text-md font-semibold mb-2"
+                          style={{ color: themeColors.text }}
+                        >
+                          {t("timeline.link")}:
+                        </h4>
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-sm hover:underline"
+                          style={{ color: themeColors.primary }}
+                        >
+                          <FaExternalLinkAlt className="mr-2" />
+                          {item.link}
+                        </a>
+                      </div>
+                    )}
+                    
                     {/* Détails affichés lorsqu'un élément est sélectionné */}
                     {selectedItem === item.id && (
                       <div className="mt-4 pt-4" style={{ borderTop: `1px solid ${themeColors.border}` }}>
-                        <h4 className="font-semibold mb-2" style={{ color: themeColors.text }}>
-                          {t("timeline.details")}:
-                        </h4>
-                        <ul className="list-disc list-inside space-y-1">
-                          {item.details.map((detail, i) => (
-                            <li key={`${item.id}-detail-${i}`} style={{ color: themeColors.text }}>{detail}</li>
-                          ))}
-                        </ul>
-                        
+                        {item.details && item.details.length > 0 && (
+                          <>
+                            <h4
+                              className="text-md font-semibold mb-2"
+                              style={{ color: themeColors.text }}
+                            >
+                              {t("timeline.details")}:
+                            </h4>
+                            <ul className="list-disc list-inside space-y-1">
+                              {item.details?.map((detail, i) => (
+                                <li key={`${item.id}-detail-${i}`} style={{ color: themeColors.text }}>{detail}</li>
+                              ))}
+                            </ul>
+                          </>
+                        )}
+
                         {item.technologies && (
                           <div className="mt-4">
                             <h4 className="font-semibold mb-2" style={{ color: themeColors.text }}>

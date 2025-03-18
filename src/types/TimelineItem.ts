@@ -5,10 +5,11 @@ export interface TimelineItem {
   title: string;
   description: string;
   category: "education" | "experience" | "project";
-  details: string[];
+  details?: string[];
   location?: string;
   technologies?: string[];
-  image?: string[];  
+  image?: string[];
+  link?: string;  
   demoUrl?: string;
   gitUrl?: string;
 }

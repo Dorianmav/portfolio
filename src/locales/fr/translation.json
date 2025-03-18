@@ -27,6 +27,7 @@
 
   "timeline": {
     "title": "MON PARCOURS",
+    "description": "Mon parcours académique, professionnel et mes projets",
     "filters": {
       "all": "Tout",
       "experience": "Expérience",
@@ -36,6 +37,7 @@
     "details": "Détails",
     "technologies": "Technologies",
     "location": "Lieu",
+    "link": "Lien",
     "demo": "Voir la démo",
     "git": "Voir le code"
   },
