@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import { Col, Row } from "react-bootstrap";
 import { DiJavascript1, DiNodejs, DiReact, DiJava } from "react-icons/di";
 import {
   SiTypescript,
@@ -17,129 +16,53 @@ import {
 } from "react-icons/si";
 import { IconContext } from "react-icons";
 import { useTheme } from "../../context/ThemeContext";
+import "./marquee.css";
 
 /**
  * Techstack component that displays a grid of technology icons
- * representing the developer's technical skills
+ * representing the developer's technical skills with infinite scrolling
  */
 const Techstack: React.FC = () => {
   const { themeColors } = useTheme();
+  
+  const technologies = useMemo(() => [
+    { icon: SiTypescript, name: "TypeScript" },
+    { icon: DiJavascript1, name: "JavaScript" },
+    { icon: DiNodejs, name: "Node.js" },
+    { icon: DiReact, name: "React" },
+    { icon: SiOcaml, name: "OCaml" },
+    { icon: SiFlutter, name: "Flutter" },
+    { icon: SiMysql, name: "MySQL" },
+    { icon: SiPostgresql, name: "PostgreSQL" },
+    { icon: SiRust, name: "Rust" },
+    { icon: DiJava, name: "Java" },
+    { icon: SiLaravel, name: "Laravel" },
+    { icon: SiPhp, name: "PHP" },
+    { icon: SiAngular, name: "Angular" },
+    { icon: SiGraphql, name: "GraphQL" },
+    { icon: SiExpress, name: "Express" },
+    { icon: SiNextdotjs, name: "Next.js" },
+  ], []);
+  
+  const iconContextValue = useMemo(() => ({ size: "3em", color: themeColors.text }), [themeColors.text]);
+  
   return (
-    <IconContext.Provider value={useMemo(() => ({ color: themeColors.text }), [themeColors.text])}>
-      <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <SiTypescript title="TypeScript" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <DiJavascript1 title="JavaScript" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <DiNodejs title="Node.js" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <DiReact title="React" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <SiOcaml title="OCaml" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <SiFlutter title="Flutter" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <SiMysql title="MySQL" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <SiPostgresql title="PostgreSQL" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <SiRust title="Rust" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <DiJava title="Java" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <SiLaravel title="Laravel" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <SiPhp title="PHP" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <SiAngular title="Angular" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <SiGraphql title="GraphQL" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <SiExpress title="Express" />
-        </Col>
-        <Col
-          xs={4}
-          md={2}
-          className="text-7xl m-4 p-3 opacity-90 border border-purple-300/60 text-center rounded-md shadow-lg shadow-purple-900/20 overflow-hidden transition-all duration-400 hover:scale-105 hover:border-2 hover:border-purple-400/90 flex items-center justify-center"
-        >
-          <SiNextdotjs title="Next.js" />
-        </Col>
-      </Row>
+    <IconContext.Provider value={iconContextValue}>
+      <div className="marquee-container">
+        <div className="marquee">
+          {[...technologies, ...technologies].map((tech, index) => (
+            <div
+              key={`${tech.name}-${index}`}
+              className="marquee-item"
+            >
+              <div className="p-4 border border-purple-300 rounded-lg bg-white/5 shadow-lg overflow-hidden hover:scale-110 transition-all duration-300 flex items-center justify-center">
+                <tech.icon title={tech.name} />
+              </div>
+              <span className="mt-2 text-sm" style={{ color: themeColors.text }}>{tech.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </IconContext.Provider>
   );
 };

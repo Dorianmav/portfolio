@@ -14,7 +14,7 @@ import ResumeButton from "./components/ResumeButton/ResumeButton";
 import { motion } from "framer-motion";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle";
-import Timeline from "./components/timelinePreview";
+import Timeline from "./components/TimelinePreview";
 
 // Composant pour la page d'accueil
 const HomePage = () => {
