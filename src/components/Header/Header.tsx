@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../context/useTheme";
-import { FaHome, FaUserGraduate, FaBriefcase } from "react-icons/fa";
-import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { FaHome, FaHistory, FaCode, FaStar } from "react-icons/fa";
+import { MdDarkMode, MdLightMode, MdEmail } from "react-icons/md";
 import LanguageSwitcher from "../LanguageSwitcher";
 import { NavItem, ThemeColors } from "../../types/Navigation";
 
@@ -79,7 +79,7 @@ const Header: React.FC = () => {
       setIsScrolled(window.scrollY > 50);
       
       // Déterminer la section active en fonction du défilement
-      const sections = ["home", "timeline", "stack"];
+      const sections = ["home", "timeline", "stack", "recommendations", "contact"];
       const scrollPosition = window.scrollY + 100; // Ajouter un décalage pour une meilleure détection
       
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -115,8 +115,10 @@ const Header: React.FC = () => {
 
   const navItems: NavItem[] = [
     { id: "home", label: t("nav.home"), icon: <FaHome className="mr-2" /> },
-    { id: "timeline", label: t("nav.timeline"), icon: <FaUserGraduate className="mr-2" /> },
-    { id: "stack", label: t("nav.stack"), icon: <FaBriefcase className="mr-2" /> },
+    { id: "timeline", label: t("nav.timeline"), icon: <FaHistory className="mr-2" /> },
+    { id: "stack", label: t("nav.stack"), icon: <FaCode className="mr-2" /> },
+    { id: "recommendations", label: t("nav.recommendations"), icon: <FaStar className="mr-2" /> },
+    { id: "contact", label: t("nav.contact"), icon: <MdEmail className="mr-2" /> },
   ];
 
   // Gestionnaires d'événements pour les éléments de navigation desktop
@@ -211,7 +213,7 @@ const Header: React.FC = () => {
           </button>
           
           <LanguageSwitcher />
-          
+            
           <button
             className="relative w-10 h-10 flex justify-center items-center"
             onClick={toggleMobileMenu}

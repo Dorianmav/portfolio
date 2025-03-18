@@ -8,6 +8,8 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { useTheme } from "./context/useTheme";
 import Timeline from "./components/TimelinePreview";
 import Header from "./components/Header/Header";
+import Recommendation from "./components/Recommendation";
+import Contact from "./components/Contact/Contact";
 
 // Composant pour la section d'accueil
 const HomeSection: React.FC = () => {
@@ -59,6 +61,24 @@ const StackSection: React.FC = () => {
   );
 };
 
+// Composant pour la section des recommandations
+const RecommendationSection: React.FC = () => {
+  return (
+    <section id="recommendations" className="py-16">
+      <Recommendation />
+    </section>
+  );
+};
+
+// Composant pour la section de contact
+const ContactSection: React.FC = () => {
+  return (
+    <section id="contact" className="py-16">
+      <Contact />
+    </section>
+  );
+};
+
 // Composant principal de l'application
 const App: React.FC = () => {
   return (
@@ -82,6 +102,8 @@ const AppContent: React.FC = () => {
         <HomeSection />
         <TimelineSection />
         <StackSection />
+        <RecommendationSection />
+        <ContactSection />
       </div>
     </div>
   );
