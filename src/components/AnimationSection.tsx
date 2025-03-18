@@ -1,6 +1,6 @@
 import React from 'react';
 import DisplayLottie from './DisplayLottie';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/useTheme';
 
 const AnimationSection: React.FC = () => {
   const { themeColors } = useTheme();

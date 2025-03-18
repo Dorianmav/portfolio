@@ -1,159 +1,90 @@
-import "./index.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
 import Stack from "./components/Stack/Stack";
-import LanguageSwitcher from "./components/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
-import { ProjectsProvider } from "./context/ProjectsContext";
-// import Projects from "./components/Projects/Projects";
-import ProjectsPage from "./components/Projects/ProjectsPage";
-import { Routes, Route } from "react-router-dom";
 import AnimationSection from "./components/AnimationSection";
-// import Education from "./components/Education/Education";
-// import Experience from "./components/Experience/Experience";
 import ResumeButton from "./components/ResumeButton/ResumeButton";
 import { motion } from "framer-motion";
-import { ThemeProvider, useTheme } from "./context/ThemeContext";
-import ThemeToggle from "./components/ThemeToggle";
+import { ThemeProvider } from "./context/ThemeContext";
+import { useTheme } from "./context/useTheme";
 import Timeline from "./components/TimelinePreview";
+import Header from "./components/Header/Header";
 
-// Composant pour la page d'accueil
-const HomePage = () => {
+// Composant pour la section d'accueil
+const HomeSection: React.FC = () => {
   const { t } = useTranslation();
   const { themeColors } = useTheme();
 
   return (
-    <>
+    <section id="home" className="min-h-screen flex flex-col items-center justify-center">
+      <AnimationSection />
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        className="container mx-auto p-4 md:p-6 mb-2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-center mb-8"
       >
-        <div className="flex justify-between items-center">
-          <div className="flex">
-            <motion.h2
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className="text-3xl font-bold text-center"
-              style={{ color: themeColors.primary }}
-            >
-              {t("home.greeting")}
-            </motion.h2>
-          </div>
-          <div className="flex items-center space-x-4">
-            <ThemeToggle />
-            <LanguageSwitcher />
-          </div>
-        </div>
+        <h1
+          className="text-5xl font-bold mb-4"
+          style={{ color: themeColors.primary }}
+        >
+          {t("home.greeting")}
+        </h1>
+        <p
+          className="text-xl mb-6 max-w-2xl mx-auto"
+          style={{ color: themeColors.text }}
+        >
+          {t("home.intro")}
+        </p>
+        <ResumeButton />
       </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        className="container mx-auto p-4 md:p-6 mt-2"
-      >
-        <div className="flex flex-col md:flex-row gap-8 items-center">
-          <div className="w-full md:w-1/2">
-            <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className="text-4xl md:text-5xl font-bold mb-4"
-              style={{ color: themeColors.primary }}
-            >
-              {t("home.intro")}
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-              className="text-base md:text-lg mb-6"
-              style={{ color: themeColors.text }}
-            >
-              {t("home.description")}
-            </motion.p>
-            <ResumeButton />
-          </div>
-          <div className="w-full md:w-1/2 flex justify-center">
-            <AnimationSection />
-          </div>
-        </div>
-      </motion.div>
-
-      <Stack />
-      <Timeline />
-      {/* <Education /> */}
-      {/* <Experience /> */}
-      {/* <Projects /> */}
-    </>
+    </section>
   );
 };
 
-function AppContent() {
-  const { t } = useTranslation();
+// Composant pour la section de la timeline
+const TimelineSection: React.FC = () => {
+  return (
+    <section id="timeline" className="py-16">
+      <Timeline />
+    </section>
+  );
+};
+
+// Composant pour la section des compétences
+const StackSection: React.FC = () => {
+  return (
+    <section id="stack" className="py-16">
+      <Stack />
+    </section>
+  );
+};
+
+// Composant principal de l'application
+const App: React.FC = () => {
+  return (
+    <ThemeProvider>
+        <AppContent />
+    </ThemeProvider>
+  );
+};
+
+// Contenu de l'application avec accès au contexte du thème
+const AppContent: React.FC = () => {
   const { themeColors } = useTheme();
 
   return (
     <div
-      style={{ backgroundColor: themeColors.background, minHeight: "100vh" }}
+      className="app min-h-screen"
+      style={{ backgroundColor: themeColors.background }}
     >
-      <ProjectsProvider>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <HomePage />
-              </motion.div>
-            }
-          />
-          <Route
-            path="/projects"
-            element={
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ProjectsPage />
-              </motion.div>
-            }
-          />
-        </Routes>
-      </ProjectsProvider>
-
-      <motion.footer
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        className="py-6 mt-8"
-        style={{ backgroundColor: themeColors.secondary }}
-      >
-        <div className="container mx-auto text-center">
-          <p className="text-sm" style={{ color: themeColors.textLight }}>
-            {t("footer.copyright", { year: new Date().getFullYear() })}{" "}
-            {t("footer.designed")} Dorianmav
-          </p>
-        </div>
-      </motion.footer>
+      <Header />
+      <div className="container mx-auto px-4 pt-20">
+        <HomeSection />
+        <TimelineSection />
+        <StackSection />
+      </div>
     </div>
   );
-}
-
-function App() {
-  return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
-  );
-}
+};
 
 export default App;

@@ -1,23 +1,10 @@
 // src/context/ThemeContext.tsx
-import React, {
-  createContext,
-  useState,
-  useContext,
-  useEffect,
-  ReactNode,
-  useMemo,
-} from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { ThemeType, themes } from "../theme/themes";
+import { ThemeContext } from "./ThemeContext.context";
 
-interface ThemeContextType {
-  currentTheme: ThemeType;
-  themeColors: typeof themes.light;
-  toggleTheme: () => void;
-}
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
+// Composant Provider pour le contexte de thème
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   // Récupérer le thème depuis le localStorage ou utiliser 'light' par défaut
@@ -36,27 +23,22 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const themeColors = themes[currentTheme];
+  const isDarkMode = currentTheme === "dark";
+
+  // Utilisation de useMemo pour optimiser les performances
+  const contextValue = useMemo(
+    () => ({
+      currentTheme,
+      themeColors,
+      toggleTheme,
+      isDarkMode,
+    }),
+    [currentTheme, themeColors, isDarkMode]
+  );
 
   return (
-    <ThemeContext.Provider
-      value={useMemo(
-        () => ({
-          currentTheme,
-          themeColors,
-          toggleTheme,
-        }),
-        [currentTheme, themeColors]
-      )}
-    >
+    <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
   );
-};
-
-export const useTheme = (): ThemeContextType => {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
 };

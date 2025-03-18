@@ -5,7 +5,7 @@ import { FaBitbucket } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
 import { IconType, IconContext } from "react-icons";
 import WindsurfWhiteLogo from "../../assets/windsurf-white-logo.svg";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../context/useTheme";
 import "./marquee.css";
 
 /**

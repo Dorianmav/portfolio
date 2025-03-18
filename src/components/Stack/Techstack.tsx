@@ -15,7 +15,7 @@ import {
   SiNextdotjs,
 } from "react-icons/si";
 import { IconContext } from "react-icons";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../context/useTheme";
 import "./marquee.css";
 
 /**
