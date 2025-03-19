@@ -56,6 +56,7 @@ export const timelineData: TimelineItem[] = [
     description: "Développement d'un chatbot IA",
     category: "project",
     technologies: ["Intelligence Artificielle", "Chatbot"],
+    demoUrl: "https://my-ia.dorianmav.com",
     gitUrl: "https://github.com/Dorianmav/My-ia",
   },
   {
@@ -65,6 +66,7 @@ export const timelineData: TimelineItem[] = [
     description: "Développement d'un chatbot Claude IA",
     category: "project",
     technologies: ["Intelligence Artificielle", "Chatbot"],
+    demoUrl: "https://my-claude.dorianmav.com",
     gitUrl: "https://github.com/Dorianmav/my-claude",
   },
   {
@@ -74,6 +76,7 @@ export const timelineData: TimelineItem[] = [
     description: "Développement d'une application mobile et web de bibliothèque de mangas",
     category: "project",
     technologies: ["React Native", "TypeSript"],
+    demoUrl: "https://storage-front.dorianmav.com",
     gitUrl: "https://github.com/Dorianmav/Storage-Front",
   },
 ];

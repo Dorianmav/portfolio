@@ -29,16 +29,10 @@ const HomeSection: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="w-full text-center mb-6"
       >
-        <h1
-          className="text-4xl md:text-5xl font-bold mb-2"
-          style={{ color: themeColors.primary }}
-        >
+        <h1 className="text-4xl md:text-5xl font-bold mb-2" style={{ color: themeColors.primary }}>
           {t("home.greeting")}
         </h1>
-        <div 
-          className="h-1 w-24 mx-auto rounded-full"
-          style={{ backgroundColor: themeColors.highlight }}
-        ></div>
+        <div className="h-1 w-24 mx-auto rounded-full" style={{ backgroundColor: themeColors.highlight }}></div>
       </motion.div>
       
       <div className="w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center">
@@ -51,10 +45,7 @@ const HomeSection: React.FC = () => {
           <h2 className="text-2xl font-semibold mb-4" style={{ color: themeColors.secondary }}>
             {t("home.intro")}
           </h2>
-          <p
-            className="text-base leading-relaxed mb-6 text-justify"
-            style={{ color: themeColors.text }}
-          >
+          <p className="text-base leading-relaxed mb-6 text-justify" style={{ color: themeColors.text }}>
             {t("home.description")}
           </p>
           <ResumeButton />
@@ -122,10 +113,7 @@ const AppContent: React.FC = () => {
   const { themeColors } = useTheme();
 
   return (
-    <div
-      className="app min-h-screen flex flex-col"
-      style={{ backgroundColor: themeColors.background }}
-    >
+    <div className="app min-h-screen flex flex-col" style={{ backgroundColor: themeColors.background }}>
       <Header />
       <div className="container mx-auto px-4 flex-grow pt-0">
         <HomeSection />
