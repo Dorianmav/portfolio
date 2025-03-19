@@ -18,28 +18,56 @@ const HomeSection: React.FC = () => {
   const { themeColors } = useTheme();
 
   return (
-    <section id="home" className="min-h-screen flex flex-col items-center justify-center pt-16">
-      <AnimationSection />
+    <section
+      id="home"
+      className="min-h-screen flex flex-col items-center justify-center pt-16"
+      style={{ backgroundColor: themeColors.background }}
+    >
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-center mb-8"
+        transition={{ duration: 0.5 }}
+        className="w-full text-center mb-6"
       >
         <h1
-          className="text-5xl font-bold mb-4"
+          className="text-4xl md:text-5xl font-bold mb-2"
           style={{ color: themeColors.primary }}
         >
           {t("home.greeting")}
         </h1>
-        <p
-          className="text-xl mb-6 max-w-2xl mx-auto"
-          style={{ color: themeColors.text }}
-        >
-          {t("home.intro")}
-        </p>
-        <ResumeButton />
+        <div 
+          className="h-1 w-24 mx-auto rounded-full"
+          style={{ backgroundColor: themeColors.highlight }}
+        ></div>
       </motion.div>
+      
+      <div className="w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="md:w-1/2 mb-8 md:mb-0 md:pr-8"
+        >
+          <h2 className="text-2xl font-semibold mb-4" style={{ color: themeColors.secondary }}>
+            {t("home.intro")}
+          </h2>
+          <p
+            className="text-base leading-relaxed mb-6 text-justify"
+            style={{ color: themeColors.text }}
+          >
+            {t("home.description")}
+          </p>
+          <ResumeButton />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="md:w-1/2 flex justify-center md:justify-end"
+        >
+          <AnimationSection />
+        </motion.div>
+      </div>
     </section>
   );
 };
@@ -84,7 +112,7 @@ const ContactSection: React.FC = () => {
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-        <AppContent />
+      <AppContent />
     </ThemeProvider>
   );
 };
