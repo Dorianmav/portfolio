@@ -1,19 +1,7 @@
 import React, { useMemo } from "react";
 import { DiJavascript1, DiNodejs, DiReact, DiJava } from "react-icons/di";
-import {
-  SiTypescript,
-  SiPostgresql,
-  SiOcaml,
-  SiMysql,
-  SiRust,
-  SiFlutter,
-  SiLaravel,
-  SiPhp,
-  SiAngular,
-  SiGraphql,
-  SiExpress,
-  SiNextdotjs,
-} from "react-icons/si";
+import { SiTypescript, SiPostgresql, SiOcaml, SiMysql, SiRust, SiFlutter, SiLaravel, SiPhp,
+   SiAngular, SiGraphql, SiExpress, SiNextdotjs } from "react-icons/si";
 import { IconContext } from "react-icons";
 import { useTheme } from "../../context/useTheme";
 import "./marquee.css";
