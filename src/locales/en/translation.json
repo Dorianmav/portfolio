@@ -22,7 +22,7 @@
   "home": {
     "greeting": "Welcome to my Portfolio!",
     "intro": "Who I am",
-    "description": "I am a young developer with two years of real programming experience. Passionate about manga, video games, sports, and development in Java and TypeScript, I enjoy tackling technical challenges and continuously improving my skills. Motivated and rigorous, I am always ready to learn new technologies and collaborate effectively in teams to successfully carry out innovative projects. My goal is to design high-performance and optimized solutions while contributing to a dynamic and stimulating work environment."
+    "description": "I am a young developer with two years of solid experience. Passionate about manga, video games, sports, and development in Java and TypeScript, I enjoy tackling technical challenges and continuously honing my skills. Motivated and detail-oriented, I am always eager to learn new technologies and collaborate effectively within a team to drive innovative projects forward. My goal is to design high-performance, optimized solutions while contributing to a dynamic and stimulating work environment."
   },
 
   "timeline": {
@@ -39,7 +39,9 @@
     "location": "Location",
     "link": "Link",
     "demo": "View Demo",
-    "git": "View Code"
+    "git": "View Code",
+    "standardView": "Standard View",
+    "interactiveView": "Interactive View"
   },
 
   "stack": {
