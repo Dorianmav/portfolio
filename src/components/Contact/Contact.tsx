@@ -6,6 +6,16 @@ import { FiAtSign, FiPhone, FiSend, FiCheckCircle } from "react-icons/fi";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FaGithub, FaLinkedinIn, FaTwitter, FaMediumM, FaInstagram } from "react-icons/fa";
 
+// Fonction utilitaire pour convertir une couleur hex en rgba avec opacité
+const getHighlightWithOpacity = (hexColor: string, opacity: number): string => {
+  const hex = hexColor.replace('#', '');
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+  
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+};
+
 const Contact: React.FC = () => {
   const { t } = useTranslation();
   const { themeColors, isDarkMode } = useTheme();
@@ -59,11 +69,11 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="w-full py-16" style={{ backgroundColor: themeColors.background }}>
+    <div className="w-full py-12 sm:py-16" style={{ backgroundColor: themeColors.background }}>
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center justify-center mb-12">
+        <div className="flex flex-col items-center justify-center mb-8 sm:mb-12">
           <h2 
-            className="text-4xl font-bold text-center relative inline-block"
+            className="text-3xl sm:text-4xl font-bold text-center relative inline-block"
             style={{ color: themeColors.primary }}
           >
             <span className="relative z-10">{t("contact.title", "Contact")}</span>
@@ -73,7 +83,7 @@ const Contact: React.FC = () => {
             ></span>
           </h2>
           <p 
-            className="text-center mt-4 max-w-2xl"
+            className="text-center mt-4 max-w-2xl px-4"
             style={{ color: themeColors.textSecondary }}
           >
             {t("contact.subtitle", "N'hésitez pas à me contacter pour discuter de vos projets")}
@@ -87,7 +97,7 @@ const Contact: React.FC = () => {
               <div className="relative">
                 <label 
                   htmlFor="name" 
-                  className="absolute -top-2.5 left-4 px-2 text-sm"
+                  className="absolute -top-2.5 left-4 px-2 text-sm font-medium"
                   style={{ 
                     backgroundColor: themeColors.background, 
                     color: themeColors.primary 
@@ -100,7 +110,7 @@ const Contact: React.FC = () => {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg transition-all duration-300"
+                  className="w-full px-4 py-4 sm:py-3 rounded-lg transition-all duration-300 text-base sm:text-sm"
                   style={{ 
                     backgroundColor: themeColors.card,
                     color: themeColors.text,
@@ -108,13 +118,14 @@ const Contact: React.FC = () => {
                     outline: "none"
                   }}
                   placeholder={t("contact.namePlaceholder", "Votre nom")}
+                  aria-required="true"
                 />
               </div>
               
               <div className="relative">
                 <label 
                   htmlFor="email" 
-                  className="absolute -top-2.5 left-4 px-2 text-sm"
+                  className="absolute -top-2.5 left-4 px-2 text-sm font-medium"
                   style={{ 
                     backgroundColor: themeColors.background, 
                     color: themeColors.primary 
@@ -127,7 +138,7 @@ const Contact: React.FC = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg transition-all duration-300"
+                  className="w-full px-4 py-4 sm:py-3 rounded-lg transition-all duration-300 text-base sm:text-sm"
                   style={{ 
                     backgroundColor: themeColors.card,
                     color: themeColors.text,
@@ -135,13 +146,16 @@ const Contact: React.FC = () => {
                     outline: "none"
                   }}
                   placeholder={t("contact.emailPlaceholder", "votre.email@exemple.com")}
+                  aria-required="true"
+                  inputMode="email"
+                  autoComplete="email"
                 />
               </div>
               
               <div className="relative">
                 <label 
                   htmlFor="message" 
-                  className="absolute -top-2.5 left-4 px-2 text-sm"
+                  className="absolute -top-2.5 left-4 px-2 text-sm font-medium"
                   style={{ 
                     backgroundColor: themeColors.background, 
                     color: themeColors.primary 
@@ -154,7 +168,7 @@ const Contact: React.FC = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg resize-none transition-all duration-300"
+                  className="w-full px-4 py-4 sm:py-3 rounded-lg resize-none transition-all duration-300 text-base sm:text-sm"
                   style={{ 
                     backgroundColor: themeColors.card,
                     color: themeColors.text,
@@ -162,16 +176,19 @@ const Contact: React.FC = () => {
                     outline: "none"
                   }}
                   placeholder={t("contact.messagePlaceholder", "Votre message...")}
+                  aria-required="true"
                 />
               </div>
               
               {error && (
                 <div 
-                  className="p-3 rounded-lg text-center"
+                  className="p-4 rounded-lg text-center"
                   style={{ 
                     backgroundColor: isDarkMode ? "rgba(220, 38, 38, 0.2)" : "rgba(254, 226, 226, 1)",
                     color: isDarkMode ? "#f87171" : "#dc2626"
                   }}
+                  role="alert"
+                  aria-live="assertive"
                 >
                   {error}
                 </div>
@@ -180,11 +197,12 @@ const Contact: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 disabled:opacity-70 disabled:hover:scale-100 w-full sm:w-auto"
+                className="flex items-center justify-center gap-2 px-8 py-4 sm:py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 disabled:opacity-70 disabled:hover:scale-100 w-full sm:w-auto active:scale-95 text-base"
                 style={{ 
                   backgroundColor: themeColors.primary,
                   color: themeColors.textLight
                 }}
+                aria-busy={isSubmitting}
               >
                 <span>{success ? t("contact.sent", "Envoyé !") : t("contact.send", "Envoyer")}</span>
                 <div className="relative w-5 h-5">
@@ -199,28 +217,28 @@ const Contact: React.FC = () => {
           </div>
           
           {/* Informations de contact */}
-          <div className="w-full md:w-1/2 mt-8 md:mt-0">
-            <div className="space-y-8">
-              <div className="flex items-start gap-4">
+          <div className="w-full md:w-1/2 mt-10 md:mt-0">
+            <div className="space-y-8 sm:space-y-6">
+              <div className="flex items-start gap-5 sm:gap-4">
                 <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110"
+                  className="w-14 h-14 sm:w-12 sm:h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110"
                   style={{ 
                     backgroundColor: themeColors.primary,
                     color: themeColors.textLight
                   }}
                 >
-                  <FiAtSign size={22} />
+                  <FiAtSign size={24} className="sm:text-xl" />
                 </div>
                 <div>
                   <h3 
-                    className="text-lg font-medium mb-1"
+                    className="text-xl sm:text-lg font-medium mb-2 sm:mb-1"
                     style={{ color: themeColors.primary }}
                   >
                     {t("contact.emailTitle", "Email")}
                   </h3>
                   <a 
                     href={`mailto:${contactInfo.email}`}
-                    className="transition-colors duration-300 hover:underline"
+                    className="transition-colors duration-300 hover:underline text-base"
                     style={{ color: themeColors.text }}
                   >
                     {contactInfo.email}
@@ -228,26 +246,26 @@ const Contact: React.FC = () => {
                 </div>
               </div>
               
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-5 sm:gap-4">
                 <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110"
+                  className="w-14 h-14 sm:w-12 sm:h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110"
                   style={{ 
                     backgroundColor: themeColors.primary,
                     color: themeColors.textLight
                   }}
                 >
-                  <FiPhone size={22} />
+                  <FiPhone size={24} className="sm:text-xl" />
                 </div>
                 <div>
                   <h3 
-                    className="text-lg font-medium mb-1"
+                    className="text-xl sm:text-lg font-medium mb-2 sm:mb-1"
                     style={{ color: themeColors.primary }}
                   >
                     {t("contact.phoneTitle", "Téléphone")}
                   </h3>
                   <a 
                     href={`tel:${contactInfo.phone}`}
-                    className="transition-colors duration-300 hover:underline"
+                    className="transition-colors duration-300 hover:underline text-base"
                     style={{ color: themeColors.text }}
                   >
                     {contactInfo.phone}
@@ -255,51 +273,51 @@ const Contact: React.FC = () => {
                 </div>
               </div>
               
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-5 sm:gap-4">
                 <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110"
+                  className="w-14 h-14 sm:w-12 sm:h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110"
                   style={{ 
                     backgroundColor: themeColors.primary,
                     color: themeColors.textLight
                   }}
                 >
-                  <HiOutlineLocationMarker size={22} />
+                  <HiOutlineLocationMarker size={24} className="sm:text-xl" />
                 </div>
                 <div>
                   <h3 
-                    className="text-lg font-medium mb-1"
+                    className="text-xl sm:text-lg font-medium mb-2 sm:mb-1"
                     style={{ color: themeColors.primary }}
                   >
                     {t("contact.addressTitle", "Adresse")}
                   </h3>
-                  <p style={{ color: themeColors.text }}>
+                  <p style={{ color: themeColors.text }} className="text-base">
                     {contactInfo.address}
                   </p>
                 </div>
               </div>
               
               {/* Réseaux sociaux */}
-              <div className="mt-12">
+              <div className="mt-14 sm:mt-12">
                 <h3 
-                  className="text-lg font-medium mb-4"
+                  className="text-xl sm:text-lg font-medium mb-6 sm:mb-4"
                   style={{ color: themeColors.primary }}
                 >
                   {t("contact.socialTitle", "Réseaux sociaux")}
                 </h3>
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-5 sm:gap-4">
                   {socialMedia.github && (
                     <a 
                       href={socialMedia.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110"
+                      className="w-14 h-14 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 touch-manipulation"
                       style={{ 
                         backgroundColor: themeColors.primary,
                         color: themeColors.textLight
                       }}
                       aria-label="GitHub"
                     >
-                      <FaGithub size={20} />
+                      <FaGithub size={24} className="sm:text-xl" />
                     </a>
                   )}
                   
@@ -308,14 +326,14 @@ const Contact: React.FC = () => {
                       href={socialMedia.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110"
+                      className="w-14 h-14 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 touch-manipulation"
                       style={{ 
                         backgroundColor: themeColors.primary,
                         color: themeColors.textLight
                       }}
                       aria-label="LinkedIn"
                     >
-                      <FaLinkedinIn size={20} />
+                      <FaLinkedinIn size={24} className="sm:text-xl" />
                     </a>
                   )}
                   
@@ -324,14 +342,14 @@ const Contact: React.FC = () => {
                       href={socialMedia.twitter}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110"
+                      className="w-14 h-14 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 touch-manipulation"
                       style={{ 
                         backgroundColor: themeColors.primary,
                         color: themeColors.textLight
                       }}
                       aria-label="Twitter"
                     >
-                      <FaTwitter size={20} />
+                      <FaTwitter size={24} className="sm:text-xl" />
                     </a>
                   )}
                   
@@ -340,14 +358,14 @@ const Contact: React.FC = () => {
                       href={socialMedia.medium}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110"
+                      className="w-14 h-14 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 touch-manipulation"
                       style={{ 
                         backgroundColor: themeColors.primary,
                         color: themeColors.textLight
                       }}
                       aria-label="Medium"
                     >
-                      <FaMediumM size={20} />
+                      <FaMediumM size={24} className="sm:text-xl" />
                     </a>
                   )}
                   
@@ -356,14 +374,14 @@ const Contact: React.FC = () => {
                       href={socialMedia.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110"
+                      className="w-14 h-14 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 touch-manipulation"
                       style={{ 
                         backgroundColor: themeColors.primary,
                         color: themeColors.textLight
                       }}
                       aria-label="Instagram"
                     >
-                      <FaInstagram size={20} />
+                      <FaInstagram size={24} className="sm:text-xl" />
                     </a>
                   )}
                 </div>
@@ -382,6 +400,18 @@ const Contact: React.FC = () => {
         }
         .animate-scale-in {
           animation: scale-in 0.3s ease-out forwards;
+        }
+        
+        /* Amélioration du focus pour l'accessibilité */
+        input:focus, textarea:focus {
+          box-shadow: 0 0 0 3px ${getHighlightWithOpacity(themeColors.primary, 0.3)};
+        }
+        
+        /* Amélioration du tap sur mobile */
+        @media (max-width: 640px) {
+          input, textarea, button {
+            font-size: 16px; /* Évite le zoom automatique sur iOS */
+          }
         }
         `}
       </style>

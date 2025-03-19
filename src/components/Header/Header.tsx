@@ -22,7 +22,31 @@ const MobileNavigation: React.FC<{
   scrollToSection: (id: string) => void;
   isOpen: boolean;
   themeColors: ThemeColors;
-}> = ({ navItems, scrollToSection, isOpen, themeColors }) => {
+  closeMenu: () => void;
+}> = ({ navItems, scrollToSection, isOpen, themeColors, closeMenu }) => {
+  // Référence pour accéder à l'élément de menu
+  const menuRef = React.useRef<HTMLDivElement>(null);
+
+  // Effet pour gérer l'affichage/masquage du menu
+  React.useEffect(() => {
+    // Rien à faire ici, l'affichage est géré par les styles CSS
+  }, [isOpen]);
+
+  // Gestionnaire pour la touche Escape
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isOpen && e.key === 'Escape') {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, closeMenu]);
+
   // Gestionnaires d'événements pour les éléments de navigation mobile
   const handleItemHover = (e: React.MouseEvent<HTMLButtonElement> | React.FocusEvent<HTMLButtonElement>) => {
     e.currentTarget.style.backgroundColor = getHighlightWithOpacity(themeColors.highlight, 0.1);
@@ -34,35 +58,69 @@ const MobileNavigation: React.FC<{
     e.currentTarget.style.color = themeColors.text;
   };
 
+  // Fonction pour gérer la navigation et fermer le menu
+  const handleNavigation = (id: string) => {
+    scrollToSection(id);
+    closeMenu();
+  };
+
   return (
-    <div 
-      className="md:hidden overflow-hidden transition-all duration-300"
-      style={{ 
-        backgroundColor: themeColors.background,
-        borderTop: isOpen ? `1px solid ${themeColors.border}` : "none",
-        maxHeight: isOpen ? "500px" : "0",
-        opacity: isOpen ? 1 : 0
-      }}
-    >
-      <ul className="py-4">
-        {navItems.map((item) => (
-          <li key={item.id} className="mb-1">
-            <button
-              onClick={() => scrollToSection(item.id)}
-              className="w-full flex items-center px-6 py-3 transition-colors duration-300"
-              style={{ color: themeColors.text }}
-              onMouseOver={handleItemHover}
-              onFocus={handleItemHover}
-              onMouseOut={handleItemLeave}
-              onBlur={handleItemLeave}
-            >
-              <span className="mr-3">{item.icon}</span>
-              {item.label}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {/* Utiliser un élément button accessible pour gérer les clics en dehors du menu */}
+      {isOpen && (
+        <button
+          className="fixed inset-0 w-full h-full bg-transparent z-30"
+          onClick={closeMenu}
+          aria-label="Fermer le menu"
+          style={{ top: "60px" }}
+        />
+      )}
+      <div 
+        ref={menuRef}
+        role="dialog"
+        aria-modal="true"
+        className="md:hidden overflow-hidden transition-all duration-300 fixed left-0 right-0 m-0 p-0 w-full"
+        style={{ 
+          backgroundColor: themeColors.background,
+          borderTop: `1px solid ${themeColors.border}`,
+          maxHeight: isOpen ? "100vh" : "0",
+          top: "60px", // Hauteur du header
+          zIndex: 40,
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+          opacity: isOpen ? 1 : 0,
+          visibility: isOpen ? "visible" : "hidden",
+          transition: "opacity 300ms ease-in-out, max-height 300ms ease-in-out"
+        }}
+        aria-label="Menu de navigation mobile"
+        id="mobile-navigation"
+      >
+        <div className="dialog-content">
+          <nav>
+            <ul className="py-2">
+              {navItems.map((item) => (
+                <li key={item.id} className="mb-1">
+                  <button
+                    onClick={() => handleNavigation(item.id)}
+                    className="w-full flex items-center px-6 py-5 transition-colors duration-300 active:bg-opacity-20 text-left"
+                    style={{ color: themeColors.text }}
+                    onMouseOver={handleItemHover}
+                    onFocus={handleItemHover}
+                    onMouseOut={handleItemLeave}
+                    onBlur={handleItemLeave}
+                    aria-label={`Naviguer vers ${item.label}`}
+                    // Désactiver le focus quand le menu est fermé
+                    tabIndex={isOpen ? 0 : -1}
+                  >
+                    <span className="mr-3 text-xl">{item.icon}</span>
+                    <span className="text-lg">{item.label}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </>
   );
 };
 
@@ -97,6 +155,20 @@ const Header: React.FC = () => {
     };
   }, []);
 
+  // Effet pour fermer le menu mobile lors du clic en dehors - plus nécessaire avec dialog
+  useEffect(() => {
+    // Bloquer le défilement quand le menu mobile est ouvert
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -108,8 +180,13 @@ const Header: React.FC = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Fermer le menu avant de faire défiler pour éviter les problèmes
       closeMobileMenu();
+      
+      // Petit délai pour permettre au menu de se fermer avant de défiler
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
     }
   };
 
@@ -145,7 +222,7 @@ const Header: React.FC = () => {
         backdropFilter: isScrolled ? "blur(10px)" : "none"
       }}
     >
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div className="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
         <button 
           className="flex items-center transition-transform duration-300 hover:scale-105"
           onClick={() => scrollToSection("home")}
@@ -200,24 +277,26 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center space-x-3">
+        <div className="md:hidden flex items-center space-x-3 pr-1">
           <button 
             onClick={toggleTheme}
-            className="p-2 rounded-full transition-colors duration-300"
+            className="p-2 rounded-full transition-colors duration-300 touch-manipulation"
             style={{ 
               backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.05)"
             }}
             aria-label={isDarkMode ? t("accessibility.lightMode") : t("accessibility.darkMode")}
           >
-            {isDarkMode ? <MdLightMode size={20} /> : <MdDarkMode size={20} />}
+            {isDarkMode ? <MdLightMode size={22} /> : <MdDarkMode size={22} />}
           </button>
           
           <LanguageSwitcher />
             
           <button
-            className="relative w-10 h-10 flex justify-center items-center"
+            className="relative w-10 h-10 flex justify-center items-center mobile-menu-button touch-manipulation ml-1"
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? t("accessibility.closeMenu") : t("accessibility.openMenu")}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             <div className="w-6 h-0.5 absolute transition-all duration-300" 
               style={{ 
@@ -246,7 +325,8 @@ const Header: React.FC = () => {
         navItems={navItems} 
         scrollToSection={scrollToSection} 
         isOpen={isMobileMenuOpen} 
-        themeColors={themeColors} 
+        themeColors={themeColors}
+        closeMenu={closeMobileMenu}
       />
     </header>
   );
