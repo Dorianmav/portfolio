@@ -12,7 +12,7 @@
     "backToTop": "Retour en haut",
     "lightMode": "Mode clair",
     "darkMode": "Mode sombre",
-    "closeMenu": "Fermer le menu",
+      "closeMenu": "Fermer le menu",
     "openMenu": "Ouvrir le menu",
     "codingAnimation": "Animation d'une personne qui code",
     "previousRecommendation": "Recommandation précédente",
@@ -22,7 +22,7 @@
   "home": {
     "greeting": "Bienvenue sur mon Portfolio !",
     "intro": "Qui suis-je",
-    "description": "Je suis un jeune développeur avec deux années d'expérience réelle en programmation. Passionné par les mangas, les jeux vidéo, le sport et le développement en Java et TypeScript, j'aime relever des défis techniques et améliorer mes compétences en continu. Motivé et rigoureux, je suis toujours prêt à apprendre de nouvelles technologies et à collaborer efficacement en équipe pour mener à bien des projets innovants. Mon objectif est de concevoir des solutions performantes et optimisées tout en contribuant à un environnement de travail dynamique et stimulant."
+    "description": "Je suis un jeune développeur avec deux réelles années d'expérience. Passionné par les mangas, les jeux vidéo, le sport et le développement en Java et TypeScript, j'aime relever des défis techniques et améliorer mes compétences en continu. Motivé et rigoureux, je suis toujours prêt à apprendre de nouvelles technologies et à collaborer efficacement en équipe pour mener à bien des projets innovants. Mon objectif est de concevoir des solutions performantes et optimisées tout en contribuant à un environnement de travail dynamique et stimulant."
   },
 
   "timeline": {
@@ -39,7 +39,9 @@
     "location": "Lieu",
     "link": "Lien",
     "demo": "Voir la démo",
-    "git": "Voir le code"
+    "git": "Voir le code",
+    "standardView": "Vue standard",
+    "interactiveView": "Vue interactive"
   },
 
   "stack": {

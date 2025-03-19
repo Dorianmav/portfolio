@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { DiJavascript1, DiNodejs, DiReact, DiJava } from "react-icons/di";
 import { SiTypescript, SiPostgresql, SiOcaml, SiMysql, SiRust, SiFlutter, SiLaravel, SiPhp,
    SiAngular, SiGraphql, SiExpress, SiNextdotjs } from "react-icons/si";
@@ -32,7 +32,24 @@ const Techstack: React.FC = () => {
     { icon: SiNextdotjs, name: "Next.js" },
   ], []);
   
-  const iconContextValue = useMemo(() => ({ size: "3em", color: themeColors.text }), [themeColors.text]);
+  // Utilisation d'un hook pour détecter si l'écran est mobile
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  
+  const iconContextValue = useMemo(() => ({ 
+    size: isMobile ? "2.5em" : "3em", 
+    color: themeColors.text 
+  }), [themeColors.text, isMobile]);
   
   return (
     <IconContext.Provider value={iconContextValue}>
@@ -43,10 +60,10 @@ const Techstack: React.FC = () => {
               key={`${tech.name}-${index}`}
               className="marquee-item"
             >
-              <div className="p-4 border border-purple-300 rounded-lg bg-white/5 shadow-lg overflow-hidden hover:scale-110 transition-all duration-300 flex items-center justify-center">
+              <div className="p-3 sm:p-4 border border-purple-300 rounded-lg bg-white/5 shadow-lg overflow-hidden hover:scale-110 transition-all duration-300 flex items-center justify-center">
                 <tech.icon title={tech.name} />
               </div>
-              <span className="mt-2 text-sm" style={{ color: themeColors.text }}>{tech.name}</span>
+              <span className="mt-2 text-xs sm:text-sm" style={{ color: themeColors.text }}>{tech.name}</span>
             </div>
           ))}
         </div>

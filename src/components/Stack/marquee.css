@@ -23,8 +23,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 20px;
-  min-width: 120px;
+  margin: 0 10px;
+  min-width: 100px;
+}
+
+/* Ajustements pour mobile */
+@media (max-width: 768px) {
+  .marquee {
+    animation: scroll 40s linear infinite; /* Animation plus rapide sur mobile */
+  }
+  
+  .marquee-reverse {
+    animation: scroll-reverse 40s linear infinite;
+  }
+  
+  .marquee-item {
+    margin: 0 8px;
+    min-width: 80px;
+  }
 }
 
 @keyframes scroll {
@@ -49,4 +65,12 @@
 .marquee:hover,
 .marquee-reverse:hover {
   animation-play-state: paused;
+}
+
+/* Animation de pulsation pour les icônes sur mobile */
+@media (max-width: 768px) {
+  .marquee-item:active > div {
+    transform: scale(1.15);
+    transition: transform 0.2s ease;
+  }
 }
