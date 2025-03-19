@@ -88,8 +88,15 @@ const Timeline = () => {
   };
 
   // Gérer le clic sur un élément
-  const handleItemClick = (id: number) => {
-    setSelectedItem(selectedItem === id ? null : id);
+  const handleItemClick = (item: TimelineItem) => {
+    // Vérifier si l'élément a des détails à afficher
+    const hasDetails = item.details && item.details.length > 0;
+    const hasTechnologies = item.technologies && item.technologies.length > 0;
+    
+    // N'ouvrir la modal que si l'élément a des détails, des technologies ou des liens
+    if (hasDetails || hasTechnologies ) {
+      setSelectedItem(item.id);
+    }
   };
 
   return (
@@ -187,7 +194,11 @@ const Timeline = () => {
                 {/* Contenu */}
                 <div className="md:w-1/2 md:px-7">
                   <button 
-                    className="p-4 rounded-lg shadow cursor-pointer w-full text-left"
+                    className={`p-4 rounded-lg shadow cursor-pointer w-full text-left ${
+                      (item.details || item.technologies ) 
+                        ? "cursor-pointer hover:shadow-lg" 
+                        : ""
+                    } transition-all duration-300`}
                     style={{ 
                       backgroundColor: themeColors.card,
                       ...(index % 2 === 0
@@ -207,8 +218,7 @@ const Timeline = () => {
                           }),
                       color: themeColors.text,
                     }}
-                    onClick={() => handleItemClick(item.id)}
-                    aria-expanded={selectedItem === item.id}
+                    onClick={() => handleItemClick(item)}
                   >
                     <h3 className="text-xl font-bold" style={{ color: themeColors.text }}>{item.title}</h3>
                     <p style={{ color: themeColors.text }}>{item.description}</p>
