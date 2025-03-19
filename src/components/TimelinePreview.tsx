@@ -94,7 +94,7 @@ const Timeline = () => {
     const hasTechnologies = item.technologies && item.technologies.length > 0;
     
     // N'ouvrir la modal que si l'élément a des détails, des technologies ou des liens
-    if (hasDetails || hasTechnologies ) {
+    if (hasDetails || hasTechnologies) {
       setSelectedItem(item.id);
     }
   };
