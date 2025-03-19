@@ -18,7 +18,7 @@ const HomeSection: React.FC = () => {
   const { themeColors } = useTheme();
 
   return (
-    <section id="home" className="min-h-screen flex flex-col items-center justify-center">
+    <section id="home" className="min-h-screen flex flex-col items-center justify-center pt-16">
       <AnimationSection />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -99,7 +99,7 @@ const AppContent: React.FC = () => {
       style={{ backgroundColor: themeColors.background }}
     >
       <Header />
-      <div className="container mx-auto px-4 pt-20 flex-grow">
+      <div className="container mx-auto px-4 flex-grow pt-0">
         <HomeSection />
         <TimelineSection />
         <StackSection />
