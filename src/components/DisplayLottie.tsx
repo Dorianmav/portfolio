@@ -1,25 +1,23 @@
 import React from "react";
-// @ts-expect-error - Pas de fichier de déclaration pour react-lottie
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import codingBlackAnimation from "../assets/lottie/coding-black.json";
+import { useTranslation } from "react-i18next";
 
 const DisplayLottie: React.FC = () => {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: codingBlackAnimation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
+  const { t } = useTranslation();
+  
   return (
-    <div
-      className="lottie-container"
-      role="img"
-      aria-label="Animation de codage"
-    >
-      <Lottie options={defaultOptions} />
+    <div className="lottie-container">
+      <Lottie
+        animationData={codingBlackAnimation}
+        loop={true}
+        autoplay={true}
+        aria-label={t("accessibility.codingAnimation")}
+        rendererSettings={{
+          preserveAspectRatio: "xMidYMid slice"
+        }}
+      />
+      <span className="sr-only">{t("accessibility.codingAnimation")}</span>
     </div>
   );
 };

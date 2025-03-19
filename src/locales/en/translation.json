@@ -1,22 +1,52 @@
 {
-  "header": {
+  "nav": {
     "home": "Home",
-    "about": "About",
-    "projects": "Projects",
-    "resume": "Resume",
-    "contact": "Contact"
+    "timeline": "Journey",
+    "stack": "Stack",
+    "recommendations": "Recommendations",
+    "contact": "Contact",
+    "links": "Quick links"
   },
+
+  "accessibility": {
+    "backToTop": "Back to top",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
+    "codingAnimation": "Animation of a person coding",
+    "previousRecommendation": "Previous recommendation",
+    "nextRecommendation": "Next recommendation"
+  },
+
   "home": {
     "greeting": "Welcome to my Portfolio!",
     "intro": "Who I am",
     "description": "I am a young developer with two years of real programming experience. Passionate about manga, video games, sports, and development in Java and TypeScript, I enjoy tackling technical challenges and continuously improving my skills. Motivated and rigorous, I am always ready to learn new technologies and collaborate effectively in teams to successfully carry out innovative projects. My goal is to design high-performance and optimized solutions while contributing to a dynamic and stimulating work environment."
   },
+
+  "timeline": {
+    "title": "MY JOURNEY",
+    "description": "My academic, professional journey and projects",
+    "filters": {
+      "all": "All",
+      "experience": "Experience",
+      "education": "Education",
+      "project": "Project"
+    },
+    "details": "Details",
+    "technologies": "Technologies",
+    "location": "Location",
+    "link": "Link",
+    "demo": "View Demo",
+    "git": "View Code"
+  },
+
   "stack": {
-    "title": "WHO I AM",
-    "description": "I am a passionate full stack web developer with experience in JavaScript, React.js, Node.js, and many other modern technologies.",
     "techstack": "Professional Skills",
     "toolstack": "Tools I Use"
   },
+
   "education": {
     "title": "MY ACADEMIC JOURNEY",
     "description": "Here is my educational background and training.",
@@ -39,6 +69,7 @@
       "description": "Mathematics and Engineering Sciences option, with highest honors."
     }
   },
+
   "experience": {
     "title": "MY PROFESSIONAL EXPERIENCE",
     "description": "Here are my most significant professional experiences.",
@@ -64,6 +95,7 @@
       "skills": ["React Native", "JavaScript", "REST API", "Git"]
     }
   },
+
   "projects": {
     "title": "MY WORK",
     "subtitle": "My recent work",
@@ -82,24 +114,56 @@
     "sortAlphabetical": "Alphabetical",
     "back": "Back"
   },
+
+  "recommendations": {
+    "title": "Recommendations",
+    "subtitle": "What my colleagues and clients say"
+  },
+
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Feel free to contact me to discuss your projects",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "your.email@example.com",
+    "message": "Message",
+    "messagePlaceholder": "Your message...",
+    "send": "Send",
+    "sent": "Sent!",
+    "errorAllFields": "Please fill in all fields",
+    "errorEmail": "Please enter a valid email address",
+    "errorSubmit": "An error occurred. Please try again.",
+    "emailTitle": "Email",
+    "phoneTitle": "Phone",
+    "addressTitle": "Address",
+    "socialTitle": "Social Media"
+  },
+
   "resume": {
     "title": "MY RESUME",
     "button": "View my Resume",
-    "download": "Download Resume"
+    "download": "Download Resume",
+    "documentDescription": "PDF Document",
+    "pdfNotSupported": "Your browser does not support PDF display. Please download the document to view it.",
+    "close": "Close"
   },
-  "contact": {
-    "title": "CONTACT ME",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "send": "Send"
-  },
+
   "footer": {
     "designed": "Designed and developed by",
-    "copyright": "Copyright 2023"
+    "copyright": "All rights reserved",
+    "links": "Quick links",
+    "social": "Social media"
   },
+
   "language": {
     "english": "English",
     "french": "French"
+  },
+  
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light mode",
+    "dark": "Dark mode"
   }
 }

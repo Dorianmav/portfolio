@@ -1,22 +1,52 @@
 {
-  "header": {
+  "nav": {
     "home": "Accueil",
-    "about": "À propos",
-    "projects": "Projets",
-    "resume": "CV",
-    "contact": "Contact"
+    "timeline": "Parcours",
+    "stack": "Stack",
+    "recommendations": "Recommandations",
+    "contact": "Contact",
+    "links": "Liens rapides"
   },
+
+  "accessibility": {
+    "backToTop": "Retour en haut",
+    "lightMode": "Mode clair",
+    "darkMode": "Mode sombre",
+    "closeMenu": "Fermer le menu",
+    "openMenu": "Ouvrir le menu",
+    "codingAnimation": "Animation d'une personne qui code",
+    "previousRecommendation": "Recommandation précédente",
+    "nextRecommendation": "Recommandation suivante"
+  },
+
   "home": {
     "greeting": "Bienvenue sur mon Portfolio !",
     "intro": "Qui suis-je",
     "description": "Je suis un jeune développeur avec deux années d'expérience réelle en programmation. Passionné par les mangas, les jeux vidéo, le sport et le développement en Java et TypeScript, j'aime relever des défis techniques et améliorer mes compétences en continu. Motivé et rigoureux, je suis toujours prêt à apprendre de nouvelles technologies et à collaborer efficacement en équipe pour mener à bien des projets innovants. Mon objectif est de concevoir des solutions performantes et optimisées tout en contribuant à un environnement de travail dynamique et stimulant."
   },
+
+  "timeline": {
+    "title": "MON PARCOURS",
+    "description": "Mon parcours académique, professionnel et mes projets",
+    "filters": {
+      "all": "Tout",
+      "experience": "Expérience",
+      "education": "Formation",
+      "project": "Projet"
+    },
+    "details": "Détails",
+    "technologies": "Technologies",
+    "location": "Lieu",
+    "link": "Lien",
+    "demo": "Voir la démo",
+    "git": "Voir le code"
+  },
+
   "stack": {
-    "title": "QUI SUIS-JE",
-    "description": "Je suis un développeur web full stack passionné avec de l'expérience en JavaScript, React.js, Node.js et de nombreuses autres technologies modernes.",
     "techstack": "Compétences Professionnelles",
     "toolstack": "Outils que j'utilise"
   },
+
   "education": {
     "title": "MON PARCOURS ACADÉMIQUE",
     "description": "Voici mon parcours éducatif et mes formations.",
@@ -39,6 +69,7 @@
       "description": "Option Mathématiques et Sciences de l'Ingénieur, mention Très Bien."
     }
   },
+
   "experience": {
     "title": "MON EXPÉRIENCE PROFESSIONNELLE",
     "description": "Voici mes expériences professionnelles les plus significatives.",
@@ -64,6 +95,7 @@
       "skills": ["React Native", "JavaScript", "API REST", "Git"]
     }
   },
+
   "projects": {
     "title": "MES TRAVAUX",
     "subtitle": "Mes travaux récents",
@@ -82,24 +114,56 @@
     "sortOldest": "Plus ancien",
     "sortAlphabetical": "Alphabétique"
   },
+
+  "recommendations": {
+    "title": "Recommandations",
+    "subtitle": "Ce que disent mes collègues et clients"
+  },
+
+  "contact": {
+    "title": "Contact",
+    "subtitle": "N'hésitez pas à me contacter pour discuter de vos projets",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "email": "Email",
+    "emailPlaceholder": "votre.email@exemple.com",
+    "message": "Message",
+    "messagePlaceholder": "Votre message...",
+    "send": "Envoyer",
+    "sent": "Envoyé !",
+    "errorAllFields": "Veuillez remplir tous les champs",
+    "errorEmail": "Veuillez entrer une adresse email valide",
+    "errorSubmit": "Une erreur est survenue. Veuillez réessayer.",
+    "emailTitle": "Email",
+    "phoneTitle": "Téléphone",
+    "addressTitle": "Adresse",
+    "socialTitle": "Réseaux sociaux"
+  },
+
   "resume": {
     "title": "MON CV",
     "button": "Voir mon CV",
-    "download": "Télécharger CV"
+    "download": "Télécharger CV",
+    "documentDescription": "Document PDF",
+    "pdfNotSupported": "Votre navigateur ne prend pas en charge l'affichage des PDF. Veuillez télécharger le document pour le visualiser.",
+    "close": "Fermer"
   },
-  "contact": {
-    "title": "CONTACTEZ-MOI",
-    "name": "Nom",
-    "email": "Email",
-    "message": "Message",
-    "send": "Envoyer"
-  },
+
   "footer": {
     "designed": "Conçu et développé par",
-    "copyright": "Copyright 2023"
+    "copyright": "Tous droits réservés",
+    "links": "Liens rapides",
+    "social": "Réseaux sociaux"
   },
+
   "language": {
     "english": "Anglais",
     "french": "Français"
+  },
+  
+  "theme": {
+    "toggle": "Changer de thème",
+    "light": "Mode clair",
+    "dark": "Mode sombre"
   }
 }
