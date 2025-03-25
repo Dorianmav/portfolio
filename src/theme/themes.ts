@@ -40,3 +40,30 @@ export const themes: Record<ThemeType, ThemeColors> = {
     card: "#262639", // Couleur de la carte
   },
 };
+
+export const themes2: Record<ThemeType, ThemeColors> = {
+  light: {
+    background: "#F8F9FA", // Blanc cassé moderne
+    primary: "#6D9DC5", // Bleu apaisant
+    secondary: "#80A4ED", // Bleu ciel
+    accent: "#F9C846", // Jaune moutarde
+    highlight: "#FF8364", // Corail
+    text: "#2D3142", // Bleu-gris foncé
+    textLight: "#FFFFFF", // Blanc pur
+    textSecondary: "#6C757D", // Gris moyen
+    border: "#DEE2E6", // Gris très clair
+    card: "#FFFFFF", // Blanc
+  },
+  dark: {
+    background: "#2D3142", // Bleu-gris foncé
+    primary: "#4F6D7A", // Bleu ardoise
+    secondary: "#7A9E7E", // Vert sauge
+    accent: "#F9C846", // Jaune moutarde
+    highlight: "#EF767A", // Rose corail
+    text: "#F8F9FA", // Blanc cassé
+    textLight: "#FFFFFF", // Blanc pur
+    textSecondary: "#ADB5BD", // Gris clair
+    border: "#495057", // Gris foncé
+    card: "#3D4153", // Bleu-gris plus clair que le fond
+  },
+};

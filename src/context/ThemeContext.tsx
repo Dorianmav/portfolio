@@ -1,6 +1,6 @@
 // src/context/ThemeContext.tsx
 import React, { useState, useEffect, useMemo } from "react";
-import { ThemeType, themes } from "../theme/themes";
+import { ThemeType, themes, themes2 } from "../theme/themes";
 import { ThemeContext } from "./ThemeContext.context";
 
 // Fonction pour déterminer si c'est la nuit en fonction de l'heure actuelle
@@ -24,16 +24,35 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     return isNightTime() ? "dark" : "light";
   });
 
+  // État pour gérer la palette de couleurs actuelle (1 pour themes, 2 pour themes2)
+  const [currentPalette, setCurrentPalette] = useState<number>(() => {
+    const savedPalette = localStorage.getItem("palette");
+    return savedPalette ? parseInt(savedPalette) : 1;
+  });
+
   // Mettre à jour le localStorage quand le thème change
   useEffect(() => {
     localStorage.setItem("theme", currentTheme);
   }, [currentTheme]);
 
+  // Mettre à jour le localStorage quand la palette change
+  useEffect(() => {
+    localStorage.setItem("palette", currentPalette.toString());
+  }, [currentPalette]);
+
   const toggleTheme = () => {
     setCurrentTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
-  const themeColors = themes[currentTheme];
+  const togglePalette = () => {
+    setCurrentPalette((prevPalette) => (prevPalette === 1 ? 2 : 1));
+  };
+
+  // Sélectionner la palette de couleurs appropriée
+  const themeColors = currentPalette === 1 
+    ? themes[currentTheme] 
+    : themes2[currentTheme];
+    
   const isDarkMode = currentTheme === "dark";
 
   // Utilisation de useMemo pour optimiser les performances
@@ -43,8 +62,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       themeColors,
       toggleTheme,
       isDarkMode,
+      currentPalette,
+      togglePalette,
     }),
-    [currentTheme, themeColors, isDarkMode]
+    [currentTheme, themeColors, isDarkMode, currentPalette]
   );
 
   return (

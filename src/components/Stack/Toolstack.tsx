@@ -41,7 +41,7 @@ const Toolstack: React.FC = () => {
             height: "3em", 
             width: "3em",
             opacity: "0.9",
-            filter: themeColors.text === '#333333' ? "invert(100%)" : "none",
+            filter: themeColors.text === '#333333' || '#2D3142' ? "invert(100%)" : "none",
             objectFit: "contain" 
           }}
         />

@@ -5,4 +5,6 @@ export interface ThemeContextType {
   themeColors: typeof themes.light;
   toggleTheme: () => void;
   isDarkMode: boolean;
+  currentPalette: number;
+  togglePalette: () => void;
 }

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "../../context/useTheme";
 import { FaHome, FaHistory, FaCode, FaStar } from "react-icons/fa";
 import { MdDarkMode, MdLightMode, MdEmail } from "react-icons/md";
+import { IoColorPalette } from "react-icons/io5";
 import LanguageSwitcher from "../LanguageSwitcher";
 import { NavItem, ThemeColors } from "../../types/Navigation";
 
@@ -127,7 +128,7 @@ const MobileNavigation: React.FC<{
 // Composant principal du header
 const Header: React.FC = () => {
   const { t } = useTranslation();
-  const { themeColors, toggleTheme, isDarkMode } = useTheme();
+  const { themeColors, toggleTheme, isDarkMode, togglePalette, currentPalette } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -199,132 +200,146 @@ const Header: React.FC = () => {
   ];
 
   // Gestionnaires d'événements pour les éléments de navigation desktop
-  const handleItemHover = (e: React.MouseEvent<HTMLButtonElement> | React.FocusEvent<HTMLButtonElement>) => {
+  const handleDesktopItemHover = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.currentTarget.style.color = themeColors.highlight;
-    e.currentTarget.style.borderColor = themeColors.highlight;
   };
 
-  const handleItemLeave = (e: React.MouseEvent<HTMLButtonElement> | React.FocusEvent<HTMLButtonElement>, id: string) => {
-    if (id !== activeSection) {
-      e.currentTarget.style.color = themeColors.text;
-      e.currentTarget.style.borderColor = "transparent";
-    }
+  const handleDesktopItemLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.style.color = activeSection === e.currentTarget.getAttribute('data-section') 
+      ? themeColors.highlight 
+      : themeColors.text;
   };
 
   return (
-    <header 
+    <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      style={{ 
+      style={{
         backgroundColor: isScrolled ? themeColors.background : "transparent",
-        color: themeColors.text,
-        borderBottom: isScrolled ? `1px solid ${themeColors.border}` : "none",
-        boxShadow: isScrolled ? "0 4px 20px rgba(0, 0, 0, 0.1)" : "none",
-        backdropFilter: isScrolled ? "blur(10px)" : "none"
+        boxShadow: isScrolled ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
+        backdropFilter: isScrolled ? "blur(10px)" : "none",
       }}
     >
-      <div className="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-        <button 
-          className="flex items-center transition-transform duration-300 hover:scale-105"
-          onClick={() => scrollToSection("home")}
-          aria-label={t("accessibility.backToTop")}
-        >
-          <h1 className="text-2xl font-bold flex items-center">
-            <span className="bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent pr-1">
-              Portfolio
-            </span>
-            <span style={{ color: themeColors.highlight }}>Dev</span>
-          </h1>
-        </button>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <ul className="flex space-x-6">
-            {navItems.map((item) => (
-              <li key={item.id}>
-                <button
-                  onClick={() => scrollToSection(item.id)}
-                  className="flex items-center font-medium py-2 px-1 border-b-2 transition-all duration-300"
-                  style={{ 
-                    color: activeSection === item.id ? themeColors.highlight : themeColors.text,
-                    borderColor: activeSection === item.id ? themeColors.highlight : "transparent"
-                  }}
-                  onMouseOver={handleItemHover}
-                  onFocus={handleItemHover}
-                  onMouseOut={(e) => handleItemLeave(e, item.id)}
-                  onBlur={(e) => handleItemLeave(e, item.id)}
-                >
-                  {item.icon}
-                  {item.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex items-center space-x-4">
-            <button 
-              onClick={toggleTheme}
-              className="p-2 rounded-full transition-colors duration-300"
-              style={{ 
-                backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.05)"
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex items-center">
+            <a
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("home");
               }}
-              aria-label={isDarkMode ? t("accessibility.lightMode") : t("accessibility.darkMode")}
+              className="text-xl font-bold transition-colors duration-300"
+              style={{ color: themeColors.primary }}
             >
-              {isDarkMode ? <MdLightMode size={20} /> : <MdDarkMode size={20} />}
+              Portfolio
+            </a>
+          </div>
+
+          {/* Navigation pour desktop */}
+          <nav className="hidden md:flex items-center space-x-6">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                data-section={item.id}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.id);
+                }}
+                className="flex items-center text-sm font-medium transition-colors duration-300"
+                style={{
+                  color: activeSection === item.id ? themeColors.highlight : themeColors.text,
+                }}
+                onMouseEnter={handleDesktopItemHover}
+                onMouseLeave={handleDesktopItemLeave}
+                aria-current={activeSection === item.id ? "page" : undefined}
+              >
+                {item.icon}
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Actions */}
+          <div className="flex items-center space-x-4">
+            {/* Bouton de changement de palette */}
+            <button
+              onClick={togglePalette}
+              className="flex items-center justify-center w-8 h-8 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style={{
+                backgroundColor: getHighlightWithOpacity(themeColors.highlight, 0.2),
+                color: themeColors.highlight,
+                borderColor: themeColors.highlight,
+                borderWidth: "1px"
+              }}
+              aria-label={currentPalette === 1 ? "Changer vers la palette 2" : "Changer vers la palette 1"}
+              title={currentPalette === 1 ? "Changer vers la palette 2" : "Changer vers la palette 1"}
+            >
+              <IoColorPalette size={18} />
+              <span className="ml-1 text-xs">{currentPalette}</span>
             </button>
             
-            <LanguageSwitcher />
-          </div>
-        </nav>
+            {/* Bouton de changement de thème */}
+            <button
+              onClick={toggleTheme}
+              className="flex items-center justify-center w-8 h-8 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style={{
+                backgroundColor: getHighlightWithOpacity(themeColors.highlight, 0.2),
+                color: themeColors.highlight,
+                borderColor: themeColors.highlight,
+                borderWidth: "1px"
+              }}
+              aria-label={isDarkMode ? "Passer au mode clair" : "Passer au mode sombre"}
+              title={isDarkMode ? "Passer au mode clair" : "Passer au mode sombre"}
+            >
+              {isDarkMode ? <MdLightMode size={18} /> : <MdDarkMode size={18} />}
+            </button>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center space-x-3 pr-1">
-          <button 
-            onClick={toggleTheme}
-            className="p-2 rounded-full transition-colors duration-300 touch-manipulation"
-            style={{ 
-              backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.05)"
-            }}
-            aria-label={isDarkMode ? t("accessibility.lightMode") : t("accessibility.darkMode")}
-          >
-            {isDarkMode ? <MdLightMode size={22} /> : <MdDarkMode size={22} />}
-          </button>
-          
-          <LanguageSwitcher />
-            
-          <button
-            className="relative w-10 h-10 flex justify-center items-center mobile-menu-button touch-manipulation ml-1"
-            onClick={toggleMobileMenu}
-            aria-label={isMobileMenuOpen ? t("accessibility.closeMenu") : t("accessibility.openMenu")}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-navigation"
-          >
-            <div className="w-6 h-0.5 absolute transition-all duration-300" 
-              style={{ 
-                backgroundColor: themeColors.text,
-                transform: isMobileMenuOpen ? "rotate(45deg)" : "translateY(-6px)"
+            {/* Sélecteur de langue */}
+            <LanguageSwitcher />
+
+            {/* Bouton du menu mobile */}
+            <button
+              onClick={toggleMobileMenu}
+              className="md:hidden flex flex-col justify-center items-center w-8 h-8 rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style={{
+                backgroundColor: getHighlightWithOpacity(themeColors.highlight, 0.2),
+                borderColor: themeColors.highlight,
+                borderWidth: "1px"
               }}
-            ></div>
-            <div className="w-6 h-0.5 absolute transition-opacity duration-300" 
-              style={{ 
-                backgroundColor: themeColors.text,
-                opacity: isMobileMenuOpen ? 0 : 1
-              }}
-            ></div>
-            <div className="w-6 h-0.5 absolute transition-all duration-300" 
-              style={{ 
-                backgroundColor: themeColors.text,
-                transform: isMobileMenuOpen ? "rotate(-45deg)" : "translateY(6px)"
-              }}
-            ></div>
-          </button>
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
+              aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            >
+              <div
+                className={`w-5 h-0.5 rounded-full transition-all duration-300 ${
+                  isMobileMenuOpen ? "transform rotate-45 translate-y-1.5" : "mb-1"
+                }`}
+                style={{ backgroundColor: themeColors.highlight }}
+              ></div>
+              <div
+                className={`w-5 h-0.5 rounded-full transition-all duration-300 ${
+                  isMobileMenuOpen ? "opacity-0" : ""
+                }`}
+                style={{ backgroundColor: themeColors.highlight }}
+              ></div>
+              <div
+                className={`w-5 h-0.5 rounded-full transition-all duration-300 ${
+                  isMobileMenuOpen ? "transform -rotate-45 -translate-y-1.5" : "mt-1"
+                }`}
+                style={{ backgroundColor: themeColors.highlight }}
+              ></div>
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <MobileNavigation 
-        navItems={navItems} 
-        scrollToSection={scrollToSection} 
-        isOpen={isMobileMenuOpen} 
+      {/* Menu de navigation mobile */}
+      <MobileNavigation
+        navItems={navItems}
+        scrollToSection={scrollToSection}
+        isOpen={isMobileMenuOpen}
         themeColors={themeColors}
         closeMenu={closeMobileMenu}
       />

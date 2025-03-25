@@ -42,7 +42,7 @@ const HomeSection: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="md:w-1/2 mb-8 md:mb-0 md:pr-8"
         >
-          <h2 className="text-2xl font-semibold mb-4" style={{ color: themeColors.secondary }}>
+          <h2 className="text-2xl font-semibold mb-4" style={{ color: themeColors.text }}>
             {t("home.intro")}
           </h2>
           <p className="text-base leading-relaxed mb-6 text-justify" style={{ color: themeColors.text }}>
