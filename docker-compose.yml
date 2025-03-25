@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  portfolio-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-react-app
+    ports:
+      - "50000:50000"
+    volumes:
+      - ./src:/app/src
+      # Exclure node_modules du montage pour éviter les conflits
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_PORT=50000
+      - HOST=0.0.0.0
+    # Redémarrer automatiquement en cas d'échec
+    restart: unless-stopped
