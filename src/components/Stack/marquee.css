@@ -11,34 +11,38 @@
   display: flex;
   animation: scroll 60s linear infinite;
   width: max-content;
+  gap: 20px; /* Ajoute un espacement uniforme entre les éléments */
 }
 
 .marquee-reverse {
   display: flex;
   animation: scroll-reverse 60s linear infinite;
   width: max-content;
+  gap: 20px; /* Ajoute un espacement uniforme entre les éléments */
 }
 
 .marquee-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 10px;
+  margin: 0;
   min-width: 100px;
+  flex-shrink: 0; /* Empêche les éléments de se rétrécir */
 }
 
 /* Ajustements pour mobile */
 @media (max-width: 768px) {
   .marquee {
     animation: scroll 40s linear infinite; /* Animation plus rapide sur mobile */
+    gap: 15px;
   }
   
   .marquee-reverse {
     animation: scroll-reverse 40s linear infinite;
+    gap: 15px;
   }
   
   .marquee-item {
-    margin: 0 8px;
     min-width: 80px;
   }
 }
@@ -48,13 +52,13 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% / 3)); /* Ajusté pour trois copies des éléments */
   }
 }
 
 @keyframes scroll-reverse {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% / 3)); /* Ajusté pour trois copies des éléments */
   }
   100% {
     transform: translateX(0);

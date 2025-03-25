@@ -24,7 +24,7 @@ interface Tool {
  * with infinite scrolling in reverse direction
  */
 const Toolstack: React.FC = () => {
-  const { themeColors } = useTheme();
+  const { themeColors, currentPalette } = useTheme();
   
   const tools = useMemo<Tool[]>(() => [
     { icon: SiLinux, name: "Linux" },
@@ -32,20 +32,32 @@ const Toolstack: React.FC = () => {
     { icon: VscVscode, name: "VS Code" },
     { 
       custom: true, 
-      render: () => (
-        <img
-          src={WindsurfWhiteLogo}
-          alt="Windsurf"
-          title="Windsurf"
-          style={{ 
-            height: "3em", 
-            width: "3em",
-            opacity: "0.9",
-            filter: themeColors.text === '#333333' || '#2D3142' ? "invert(100%)" : "none",
-            objectFit: "contain" 
-          }}
-        />
-      ), 
+      render: () => {
+        // Détermine si l'image doit être inversée en fonction du thème actuel
+        const shouldInvert = () => {
+          if (currentPalette === 1) {
+            return themeColors.text === '#333333';
+          } else {
+            // Pour themes2
+            return themeColors.text === '#2D3142';
+          }
+        };
+        
+        return (
+          <img
+            src={WindsurfWhiteLogo}
+            alt="Windsurf"
+            title="Windsurf"
+            style={{ 
+              height: "3em", 
+              width: "3em",
+              opacity: "0.9",
+              filter: shouldInvert() ? "invert(100%)" : "none",
+              objectFit: "contain" 
+            }}
+          />
+        );
+      }, 
       name: "Windsurf" 
     },
     { icon: SiPostman, name: "Postman" },
@@ -53,15 +65,18 @@ const Toolstack: React.FC = () => {
     { icon: DiScrum, name: "Scrum" },
     { icon: SiJira, name: "Jira" },
     { icon: FaBitbucket, name: "Bitbucket" },
-  ], [themeColors.text]);
+  ], [themeColors.text, currentPalette]);
   
   const iconContextValue = useMemo(() => ({ size: "3em", color: themeColors.text }), [themeColors.text]);
+  
+  // Dupliquer les outils pour assurer un défilement continu
+  const duplicatedTools = [...tools, ...tools, ...tools]; // Trois copies pour assurer la continuité
   
   return (
     <IconContext.Provider value={iconContextValue}>
       <div className="marquee-container">
         <div className="marquee-reverse">
-          {[...tools, ...tools].map((tool, index) => (
+          {duplicatedTools.map((tool, index) => (
             <div
               key={`${tool.name}-${index}`}
               className="marquee-item"
