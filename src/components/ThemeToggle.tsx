@@ -1,6 +1,6 @@
 // src/components/ThemeToggle.tsx
 import React from 'react';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/useTheme';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { FaSun, FaMoon } from 'react-icons/fa';
