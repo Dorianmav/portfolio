@@ -1,7 +1,7 @@
 import { ContactInfo, SocialMedia } from "../types/Contact";
 
 export const contactInfo: ContactInfo = {
-  email: "votre.email@exemple.com",
+  email: "dorianmav@outlook.com",
   phone: "+33 6 19 44 00 85",
   address: "Paris, France"
 };
