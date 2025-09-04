@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import emailjs from '@emailjs/browser';
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../context/useTheme";
 import { contactInfo, socialMedia } from "../../data/contactData";
@@ -32,6 +33,9 @@ const Contact: React.FC = () => {
     return re.test(email);
   };
 
+  // Référence au formulaire pour EmailJS
+  const form = useRef<HTMLFormElement>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -50,18 +54,25 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulation d'envoi (à remplacer par un vrai appel API)
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Envoi d'email avec EmailJS en utilisant les variables d'environnement
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
       
-      // Réinitialiser le formulaire après succès
-      setName("");
-      setEmail("");
-      setMessage("");
-      setSuccess(true);
-      
-      // Réinitialiser l'état de succès après 3 secondes
-      setTimeout(() => setSuccess(false), 3000);
-    } catch {
+      if (form.current) {
+        await emailjs.sendForm(serviceId, templateId, form.current, publicKey);
+        
+        // Réinitialiser le formulaire après succès
+        setName("");
+        setEmail("");
+        setMessage("");
+        setSuccess(true);
+        
+        // Réinitialiser l'état de succès après 3 secondes
+        setTimeout(() => setSuccess(false), 3000);
+      }
+    } catch (error) {
+      console.error("Erreur lors de l'envoi de l'email:", error);
       setError(t("contact.errorSubmit", "Une erreur est survenue. Veuillez réessayer."));
     } finally {
       setIsSubmitting(false);
@@ -93,7 +104,9 @@ const Contact: React.FC = () => {
         <div className="flex flex-col md:flex-row gap-8 lg:gap-16">
           {/* Formulaire de contact */}
           <div className="w-full md:w-1/2">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={form} onSubmit={handleSubmit} className="space-y-6">
+              {/* Champ caché pour le titre */}
+              <input type="hidden" name="title" value="Contact depuis le portfolio" />
               <div className="relative">
                 <label 
                   htmlFor="name" 
@@ -108,6 +121,7 @@ const Contact: React.FC = () => {
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full px-4 py-4 sm:py-3 rounded-lg transition-all duration-300 text-base sm:text-sm"
@@ -136,6 +150,7 @@ const Contact: React.FC = () => {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-4 py-4 sm:py-3 rounded-lg transition-all duration-300 text-base sm:text-sm"
@@ -165,6 +180,7 @@ const Contact: React.FC = () => {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={5}
