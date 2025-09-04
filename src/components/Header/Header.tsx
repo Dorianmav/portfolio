@@ -194,7 +194,7 @@ const Header: React.FC = () => {
     { id: "home", label: t("nav.home"), icon: <FaHome className="mr-2" /> },
     { id: "timeline", label: t("nav.timeline"), icon: <FaHistory className="mr-2" /> },
     { id: "stack", label: t("nav.stack"), icon: <FaCode className="mr-2" /> },
-    { id: "recommendations", label: t("nav.recommendations"), icon: <FaStar className="mr-2" /> },
+    // { id: "recommendations", label: t("nav.recommendations"), icon: <FaStar className="mr-2" /> },
     { id: "contact", label: t("nav.contact"), icon: <MdEmail className="mr-2" /> },
   ];
 

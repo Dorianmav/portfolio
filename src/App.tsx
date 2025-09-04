@@ -119,7 +119,7 @@ const AppContent: React.FC = () => {
         <HomeSection />
         <TimelineSection />
         <StackSection />
-        <RecommendationSection />
+        {/* <RecommendationSection /> */}
         <ContactSection />
       </div>
       <Footer />

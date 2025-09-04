@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useTheme } from "../../context/useTheme";
 
 // Import direct du PDF pour s'assurer qu'il est correctement bundlé
-import resumePdf from "../../assets/resume.pdf";
+import resumePdf from "../../data/CV Dorian MAVOUNGOUD.pdf";
 
 /**
  * Composant bouton pour afficher et télécharger le CV
@@ -95,7 +95,7 @@ const ResumeButton: React.FC = () => {
             </p>
             <a 
               href={resumePath} 
-              download="resume.pdf"
+              download="CV Dorian MAVOUNGOUD.pdf"
               className="flex items-center justify-center gap-2 px-4 py-2 rounded-md font-medium transition-all duration-300 hover:scale-105"
               style={{ 
                 backgroundColor: themeColors.primary,
