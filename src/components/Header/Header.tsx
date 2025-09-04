@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../context/useTheme";
-import { FaHome, FaHistory, FaCode, FaStar } from "react-icons/fa";
+import { FaHome, FaHistory, FaCode } from "react-icons/fa"; //, FaStar
 import { MdDarkMode, MdLightMode, MdEmail } from "react-icons/md";
 import LanguageSwitcher from "../LanguageSwitcher";
 import { NavItem, ThemeColors } from "../../types/Navigation";

@@ -82,13 +82,13 @@ const StackSection: React.FC = () => {
 };
 
 // Composant pour la section des recommandations
-const RecommendationSection: React.FC = () => {
-  return (
-    <section id="recommendations" className="py-16">
-      <Recommendation />
-    </section>
-  );
-};
+// const RecommendationSection: React.FC = () => {
+//   return (
+//     <section id="recommendations" className="py-16">
+//       <Recommendation />
+//     </section>
+//   );
+// };
 
 // Composant pour la section de contact
 const ContactSection: React.FC = () => {
